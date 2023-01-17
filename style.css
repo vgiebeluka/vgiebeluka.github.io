@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     -ms-overflow-style: none;
@@ -11,7 +11,7 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
-    background: linear-gradient(to bottom, rgba(1, 24, 38, 0.75), rgba(4, 41, 64, 0.75)), url(img/background.jpg) no-repeat center center;
+    background: linear-gradient(to bottom, rgba(1, 24, 38, 0.7), rgba(4, 41, 64, 0.7)), url(img/background.jpg) no-repeat center center;
     min-height: 30rem;
 }
 
@@ -99,8 +99,8 @@ nav a:hover{
 }
 
 .btn-1 {
-    background-color: #3E6E8C;
-    padding: 2rem 5rem;
+    background-color: #8AB0BF;
+    padding: 1rem 2rem;
     color: white;
     border: none;
     border-radius: 10px;
