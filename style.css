@@ -23,10 +23,10 @@ nav {
 }
 
 .nav-title {
-    font-size: 24px; /* font size for the title */
-    font-weight: bold; /* font weight for the title */
-    color: white; /* color for the title */
-    float: left; /* position the title to the left */
+    font-size: 24px; 
+    font-weight: bold; 
+    color: white; 
+    float: left; 
     margin-left: 1rem;
 }
 
@@ -135,7 +135,7 @@ nav a:hover{
     width: 100%;
     max-width: 200px;
     border-radius: 10px;
-    border: 3px solid #042940;
+    border: 0px solid #042940;
     margin: auto;
 }
 
@@ -146,12 +146,18 @@ nav a:hover{
 }
 
 .btn-2 {
-    background-color: #042940;
+    background-color: #3E6E8C   ;
     padding: 0.3rem 4.2rem;
     color: #fff;
     border: none;
     border-radius: 10px;
     font-weight: bold;
+}
+
+.conteudo {
+    text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 footer {
