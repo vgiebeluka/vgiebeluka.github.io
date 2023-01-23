@@ -27,13 +27,13 @@ nav {
     font-weight: bold; 
     color: white; 
     float: left; 
-    margin-left: 0.5rem;
+    margin-left: 1rem;
 }
 
 nav ul {
     float: right;
     margin: 0;
-    margin-right: 0;
+    margin-right: 0;    
 }
 
 nav ul li {
