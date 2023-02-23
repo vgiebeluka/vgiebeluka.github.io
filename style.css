@@ -87,6 +87,8 @@ nav a:hover{
     width: 80%;
     margin: auto;
     overflow: hidden;
+    text-align: justify;
+    text-justify: auto;
 }
 
 .sobre h1 {
@@ -143,6 +145,12 @@ nav a:hover{
     margin: 0;
     margin-bottom: 2%;
     font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+.sims a {
+    text-decoration: none;
 }
 
 .btn-2 {
@@ -155,9 +163,14 @@ nav a:hover{
 }
 
 .conteudo {
-    text-align: center;
     width: 80%;
     margin: auto;
+    text-align: justify;
+    text-justify: auto;
+}
+
+.conteudo h1 {
+    text-align: center;
 }
 
 footer {
