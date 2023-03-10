@@ -20,7 +20,7 @@
                   <a href="#">Gravitação</a>
                   <a href="#">Formação das ondas</a>
                   <a href="#">Pressão atmosférica</a>
-                  <a href="#">Densidade da água</a>
+                  <a href="densidade.html">Densidade da água</a>
                   <a href="#">Fenômenos sísmicos</a>
                   <a href="#">Forças de Coriolis</a>
                   <a href="#">Forças de atrito</a>
@@ -41,8 +41,136 @@
             <p>A maior responsável pela movimentação das águas dos oceanos é a Lua – nosso satélite natural. Sem o poder de atração que ela exerce sobre as águas, os oceanos e mares ficariam no mesmo nível. Esse “poder” da Lua é a força gravitacional que ela exerce sobre todos os objetos na Terra, mas, com a água, isso é muito mais visível. Quando a Lua gira em torno de nosso planeta, atrai a Terra para si – como se estivesse “puxando” – e essa atração provoca mudanças nos níveis das águas. Como a Lua movimenta-se e a Terra também, a atração exercida pela Lua não fica restrita a apenas um ponto. Ao se mover, ela faz a água subir e descer em diferentes regiões do globo. Isso quer dizer que a maré pode estar alta em um ponto do planeta e baixa em outro. Como a Terra realiza o movimento de rotação – gira em torno do seu próprio eixo –, fica sempre com metade de sua superfície voltada para a Lua. Nessas regiões, o poder de atração gravitacional é maior, e as marés são altas. Nas áreas opostas do globo, as marés estão baixas, ou seja, as marés dependem da localização da Lua em relação ao planeta Terra.</p>
             <h2>O Sol e as marés</h2>
             <p>O Sol também possui esse poder de atração, no entanto, a influência da Lua é sentida de maneira mais forte, pois, embora as dimensões do Sol sejam extremamente superiores às da Lua, portanto, com um campo gravitacional muito mais potente, a sua distância em relação à Terra reduz esse impacto sobre as marés.</p>
-          </div>    
+            <h2>Simulador</h2>
+            <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>
+          </div>
+          
+          <div class="canvas"><h2>Maré de quadratura</h2><canvas id="cnv" width="600" height="400"></canvas>
+    <!--Cria uma área para desenhar -->
+
+    <script>
+
+      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+
+      pincel.fillStyle = 'slategray'; // Muda a cor do pincel
+      pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+
+      setInterval("sol()", 200);
+
+      function sol() {
+        //SOL
+        pincel.clearRect(50, 300, 150, 350);
+
+        pincel.beginPath();
+        pincel.arc(100, 350, 30, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = 'yellow';
+        pincel.fill(); //preenche a figura
+
+        pincel.save();
+        pincel.translate(100, 350);
+
+        for (let i = 0; i < 36; i++) {
+          pincel.rotate(Math.PI / 18);
+          pincel.beginPath();
+          pincel.moveTo(30, 0);
+          pincel.lineTo(30 + 10 * Math.random(), 0);
+          pincel.strokeStyle = "rgb(255,220,0)";
+          pincel.lineWidth = 50;
+          pincel.stroke();
+        }
+        pincel.restore();
+      }
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("Ns  = 0,75",515,280);
+      
+
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("Nq  = 0,653",515,320);
+      
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N   = 1,3",515,240);
+
+      pincel.font = "7px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("máx",525,245);
+
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N   = -0,1",515,380);
+  
+      pincel.font = "7px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("mín",525,385);
+
+    </script>
+
+    <script>
+      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+
+      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
+
+      /*
+      y = y0 * Math.sin(k * x - w * t)
+      k: número de onda (kapa: k = 2 pi / lambda)
+      w: frequência angular (omega: w = 2 pi * f)
+      w positivo, onda progressiva
+      w negativo, onda regressiva
+      */
+
+      let y0 = 15;
+      let k = 2 * Math.PI / 300;
+      let w = 2 * Math.PI * 2;
+      let t = 0;
+      let dt = 0.01;
+
+      function passo() {
+        pincel.clearRect(0, 0, 500, 300);
+
+        pincel.beginPath();
+        for (let x = 0; x <= 500; x++) {
+          let y = 160 + y0 * Math.sin(k * x - w * t);
+          pincel.lineTo(x, y);
+        }
+        pincel.lineTo(500, 0);
+        pincel.lineTo(0, 0);
+        pincel.closePath()
+
+        pincel.fillStyle = "navy";
+        pincel.fill();
+
+
+        t = t + dt;
+
+    pincel.beginPath();
+    pincel.moveTo(0,100);
+    pincel.lineTo(500,100);
+    pincel.strokeStyle = "red";
+    pincel.stroke();
+      }
+
+      setInterval("passo ()", 50);
+
+  pincel.beginPath();
+  pincel.moveTo(510,200);
+  pincel.lineTo(510,0);
+  pincel.strokeStyle = "red";
+  pincel.stroke();
+  
+    </script>
+    </div>
+
         </main>
+
+        
+
     <!--RODAPÉ-->
     <footer>
       <p>Universidade Federal do Paraná, 2023</p>
