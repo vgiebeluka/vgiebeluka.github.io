@@ -173,6 +173,18 @@ nav a:hover{
     text-align: center;
 }
 
+.imggrav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imggrav img {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
 .canvas {
     display: flex;
     flex-direction: column;
