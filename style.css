@@ -112,10 +112,10 @@ nav a:hover{
 
 .mainbtn {
     display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .simsarea h1 {
@@ -167,6 +167,7 @@ nav a:hover{
     margin: auto;
     text-align: justify;
     text-justify: auto;
+    overflow-wrap: break-word;
 }
 
 .conteudo h1 {
@@ -181,7 +182,7 @@ nav a:hover{
 }
 
 .imggrav img {
-    max-width: 600px;
+    max-width: 80%;
     margin-top: 20px;
 }
 
