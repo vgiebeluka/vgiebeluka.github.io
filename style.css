@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 .wrapper {
     background: linear-gradient(to bottom, rgba(1, 24, 38, 0), rgba(4, 41, 64, 0)), url(img/layered-waves-haikei.svg) no-repeat center center;
     min-height: 30rem;
-    background-position: 00px 50px;
+    background-position: 00px -10px;
 }
 
 nav {
