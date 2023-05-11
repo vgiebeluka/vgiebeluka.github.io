@@ -1,5 +1,5 @@
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     -ms-overflow-style: none;
@@ -45,6 +45,7 @@ nav ul li a {
     text-decoration: none;
     color: #EBEFF2;
     padding: 18px;
+    font-weight: bold;
 }
 
 nav a:hover{
@@ -100,29 +101,40 @@ nav a:hover{
     color: white;
 }
 
-.btn-1 {
-    background-color: #8AB0BF;
-    padding: 1rem 2rem;
+.mainbtn button {
+    width: 250px;
+    height: 60px;
+    border: 3px solid #315cfd;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 1.2em;
+    font-weight: 550;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+button:hover {
+    background: #315cfd;
     color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 24px;
-    font-weight: bold;
-}
+    font-size: 1.5em;
+  }
 
 .mainbtn {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .simsarea h1 {
     text-align: center;
+    font-size: 30px;
 }
 
 .sims {
+    max-width: 90%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -135,7 +147,7 @@ nav a:hover{
 .sims img {
     display: flex;
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     border-radius: 10px;
     border: 0px solid #042940;
     margin: auto;
@@ -168,10 +180,14 @@ nav a:hover{
     text-align: justify;
     text-justify: auto;
     overflow-wrap: break-word;
+    font-size: 20px;
+    margin-bottom: 100px;
 }
 
 .conteudo h1 {
     text-align: center;
+    font-size: 40px;
+    margin: 40px 0;
 }
 
 .imggrav {
@@ -200,6 +216,10 @@ canvas {
 }
 
 footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #011826;
     color: #fff;
     text-align: center;
