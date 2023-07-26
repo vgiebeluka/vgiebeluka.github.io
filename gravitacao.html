@@ -14,7 +14,7 @@
     
         <!--BARRA DE NAVEGAÇÃO-->
         <nav>
-            <div class="nav-title">SiteOF</div>
+            <div class="nav-title">UFPR CEM</div>
             <ul>
               <li><a href="index.html">Home</a></li>
               <li class="dropdown">
@@ -27,6 +27,7 @@
                   <a href="#">Fenômenos sísmicos</a>
                   <a href="#">Forças de Coriolis</a>
                   <a href="#">Forças de atrito</a>
+                  <a href="#">Curiosidades</a>
                 </div>
               </li>
             </ul>
@@ -53,10 +54,12 @@
             <p>MANTELLATTO, Paulo Meira Bonfim. "As Influências da Lua na Terra e o Fenômeno das Marés"; Trabalho de Conclusão de Curso, Departamento de Matemática, UFSCAR. <a href="https://www.dm.ufscar.br/dm/index.php/component/attachments/download/19">https://www.dm.ufscar.br/dm/index.php/component/attachments/download/19</a>. Acesso em 10 de outubro de 2021.</p>
             
             <h2>Simulador</h2>
-            <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>-->
+            <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>
+            <p>Dados retirados da tábua de marés de Pontal do Paraná. <a href="https://tabuademares.com/br/parana/pontal-do-parana" " target="_blank">Acesse aqui a tábua de marés.</a></p>
           </div>
           
-          <div class="canvas"><h2>Maré de quadratura</h2><canvas id="cnv" width="600" height="400"></canvas>-->
+          <div class="canvas"><canvas id="cnv" width="600" height="400"></canvas>
+          
     <!--Cria uma área para desenhar -->
 
     <script>
@@ -64,29 +67,38 @@
       var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
       var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
-      pincel.fillStyle = 'slategray'; // Muda a cor do pincel
+      pincel.fillStyle = 'grey'; // Muda a cor do pincel
       pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
 
       setInterval("sol()", 200);
+
+      let cor = '#1e1438';
 
       function sol() {
         //SOL
         pincel.clearRect(50, 300, 150, 350);
 
         pincel.beginPath();
-        pincel.arc(100, 350, 30, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
-        pincel.fillStyle = 'yellow';
+        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = '#F1F0F2';
         pincel.fill(); //preenche a figura
+
+        pincel.beginPath();
+        pincel.arc(115, 360, 35, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = cor ;
+        pincel.fill(); //preenche a figura
+
+        
 
         pincel.save();
         pincel.translate(100, 350);
 
-        for (let i = 0; i < 36; i++) {
+        for (let i = 36; i < 36; i++) {
           pincel.rotate(Math.PI / 18);
           pincel.beginPath();
           pincel.moveTo(30, 0);
           pincel.lineTo(30 + 10 * Math.random(), 0);
-          pincel.strokeStyle = "rgb(255,220,0)";
+          pincel.strokeStyle = "skyblue";
           pincel.lineWidth = 50;
           pincel.stroke();
         }
@@ -120,6 +132,7 @@
       pincel.fillStyle = 'yellow';
       pincel.fillText("mín",525,385);
 
+      
     </script>
 
     <script>
@@ -136,36 +149,43 @@
       w negativo, onda regressiva
       */
 
-      let y0 = 15;
+      let y0 = 2;
       let k = 2 * Math.PI / 300;
       let w = 2 * Math.PI * 2;
       let t = 0;
       let dt = 0.01;
+      let wheight = 160;
 
       function passo() {
         pincel.clearRect(0, 0, 500, 300);
 
         pincel.beginPath();
         for (let x = 0; x <= 500; x++) {
-          let y = 160 + y0 * Math.sin(k * x - w * t);
+          let y = wheight + y0 * Math.sin(k * x - w * t);
           pincel.lineTo(x, y);
         }
         pincel.lineTo(500, 0);
         pincel.lineTo(0, 0);
         pincel.closePath()
 
-        pincel.fillStyle = "navy";
+        pincel.fillStyle = "#7EBFD9";
         pincel.fill();
 
 
         t = t + dt;
 
+        
+
+
     pincel.beginPath();
     pincel.moveTo(0,100);
     pincel.lineTo(500,100);
     pincel.strokeStyle = "red";
-    pincel.stroke();
-      }
+    pincel.stroke(); }
+
+
+
+      
 
       setInterval("passo ()", 50);
 
@@ -175,8 +195,26 @@
   pincel.strokeStyle = "red";
   pincel.stroke();
   
+  function changeValues() {
+            wheight = 190;
+            cor = '#00000000';
+        }
+
+  function changeValues2() {
+            wheight = 160;
+            cor = '#1e1438';
+        }
+
     </script>
-    </div> -->
+
+    <button type="button" id="btn5" class="btn-2" onclick="changeValues()">Maré de Sizigia</button>
+    <button type="button" id="btn6" class="btn-2" onclick="changeValues2()">Maré de Quadratura</button>
+
+    </div>
+
+    
+    
+
 
         </main>
 
@@ -184,7 +222,7 @@
 
     <!--RODAPÉ-->
     <footer>
-      <p>Universidade Federal do Paraná, 2023</p>
+      <p>Universidade Federal do Paraná – Centro de Estudos do Mar, 2023</p>
     </footer>
 
 </body>
