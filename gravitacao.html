@@ -23,7 +23,7 @@
                   <a href="#">Gravitação e marés</a>
                   <a href="#">Formação das ondas</a>
                   <a href="#">Pressão atmosférica</a>
-                  <a href="densidade.html">Densidade da água</a>
+                  <a href="densidade.html">A Água do Mar</a>
                   <a href="#">Fenômenos sísmicos</a>
                   <a href="#">Forças de Coriolis</a>
                   <a href="#">Forças de atrito</a>
@@ -36,7 +36,7 @@
         <main>
           <div class="conteudo">
         <!--"SOBRE"-->
-            <h1>GRAVITAÇÃO E MARÉS</h1>
+            <h2>Gravitação e marés</h2>
             
             <p>Desde a antiguidade, o céu vem sendo usado como mapa, calendário e relógio. Naquela época, os astros eram estudados com objetivos práticos, como prever a melhor época para o plantio e a colheita. Com o passar do tempo, várias pessoas tentaram criar teorias para explicar o comportamento dos astros, até chegar em Isaac Newton que descobriu a Lei da Gravitação Universal que conhecemos hoje. A gravitação universal é uma lei descrita por Newton que aborda a relação de atração entre o sol e os planetas do sistema solar, mas que pode ser aplicada a sistemas menores (planetas e satélites) ou maiores (galáxias, etc.). Por meio da proposição da Lei da Gravitação Universal, foi possível predizer o raio das órbitas planetárias, o período de asteroides, eventos astronômicos como eclipses, determinação da massa e raio de planetas e estrelas, etc. A Lei da Gravitação Universal estabelece que, se dois corpos possuem massa, eles sofrem a ação de uma força atrativa proporcional ao produto de suas massas e inversamente proporcional ao quadrado da sua distância. Ou seja:</p>
             <div class="imggrav"> <img src="img/EqGrav.jpg"><p>Onde G é a constante da <a href="https://pt.wikipedia.org/wiki/Constante_gravitacional_universal">Gravitação Universal</a></p></div>
@@ -62,155 +62,155 @@
           
     <!--Cria uma área para desenhar -->
 
-    <script>
+                    <script>
 
-      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
-      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+                      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
+                      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
-      pincel.fillStyle = 'grey'; // Muda a cor do pincel
-      pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+                      pincel.fillStyle = 'grey'; // Muda a cor do pincel
+                      pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
 
-      setInterval("sol()", 200);
+                      setInterval("sol()", 200);
 
-      let cor = '#1e1438';
+                      let cor = '#1e1438';
 
-      function sol() {
-        //SOL
-        pincel.clearRect(50, 300, 150, 350);
+                      function sol() {
+                        //SOL
+                        pincel.clearRect(50, 300, 150, 350);
 
-        pincel.beginPath();
-        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
-        pincel.fillStyle = '#F1F0F2';
-        pincel.fill(); //preenche a figura
+                        pincel.beginPath();
+                        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+                        pincel.fillStyle = '#F1F0F2';
+                        pincel.fill(); //preenche a figura
 
-        pincel.beginPath();
-        pincel.arc(115, 360, 35, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
-        pincel.fillStyle = cor ;
-        pincel.fill(); //preenche a figura
+                        pincel.beginPath();
+                        pincel.arc(115, 360, 35, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+                        pincel.fillStyle = cor ;
+                        pincel.fill(); //preenche a figura
 
-        
+                        
 
-        pincel.save();
-        pincel.translate(100, 350);
+                        pincel.save();
+                        pincel.translate(100, 350);
 
-        for (let i = 36; i < 36; i++) {
-          pincel.rotate(Math.PI / 18);
-          pincel.beginPath();
-          pincel.moveTo(30, 0);
-          pincel.lineTo(30 + 10 * Math.random(), 0);
-          pincel.strokeStyle = "skyblue";
-          pincel.lineWidth = 50;
-          pincel.stroke();
-        }
-        pincel.restore();
-      }
+                        for (let i = 36; i < 36; i++) {
+                          pincel.rotate(Math.PI / 18);
+                          pincel.beginPath();
+                          pincel.moveTo(30, 0);
+                          pincel.lineTo(30 + 10 * Math.random(), 0);
+                          pincel.strokeStyle = "skyblue";
+                          pincel.lineWidth = 50;
+                          pincel.stroke();
+                        }
+                        pincel.restore();
+                      }
 
-      pincel.font = "10px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("Ns  = 0,75",515,280);
-      
-
-
-      pincel.font = "10px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("Nq  = 0,653",515,320);
-      
-
-      pincel.font = "10px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("N   = 1,3",515,240);
-
-      pincel.font = "7px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("máx",525,245);
-
-      pincel.font = "10px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("N   = -0,1",515,380);
-  
-      pincel.font = "7px Arial";
-      pincel.fillStyle = 'yellow';
-      pincel.fillText("mín",525,385);
-
-      
-    </script>
-
-    <script>
-      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
-      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
-
-      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
-
-      /*
-      y = y0 * Math.sin(k * x - w * t)
-      k: número de onda (kapa: k = 2 pi / lambda)
-      w: frequência angular (omega: w = 2 pi * f)
-      w positivo, onda progressiva
-      w negativo, onda regressiva
-      */
-
-      let y0 = 2;
-      let k = 2 * Math.PI / 300;
-      let w = 2 * Math.PI * 2;
-      let t = 0;
-      let dt = 0.01;
-      let wheight = 160;
-
-      function passo() {
-        pincel.clearRect(0, 0, 500, 300);
-
-        pincel.beginPath();
-        for (let x = 0; x <= 500; x++) {
-          let y = wheight + y0 * Math.sin(k * x - w * t);
-          pincel.lineTo(x, y);
-        }
-        pincel.lineTo(500, 0);
-        pincel.lineTo(0, 0);
-        pincel.closePath()
-
-        pincel.fillStyle = "#7EBFD9";
-        pincel.fill();
+                      pincel.font = "10px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("Ns  = 0,75",515,280);
+                      
 
 
-        t = t + dt;
+                      pincel.font = "10px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("Nq  = 0,653",515,320);
+                      
 
-        
+                      pincel.font = "10px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("N   = 1,3",515,240);
+
+                      pincel.font = "7px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("máx",525,245);
+
+                      pincel.font = "10px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("N   = -0,1",515,380);
+                  
+                      pincel.font = "7px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("mín",525,385);
+
+                      
+                    </script>
+
+                    <script>
+                      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
+                      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+
+                      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
+
+                      /*
+                      y = y0 * Math.sin(k * x - w * t)
+                      k: número de onda (kapa: k = 2 pi / lambda)
+                      w: frequência angular (omega: w = 2 pi * f)
+                      w positivo, onda progressiva
+                      w negativo, onda regressiva
+                      */
+
+                      let y0 = 2;
+                      let k = 2 * Math.PI / 300;
+                      let w = 2 * Math.PI * 2;
+                      let t = 0;
+                      let dt = 0.01;
+                      let wheight = 160;
+
+                      function passo() {
+                        pincel.clearRect(0, 0, 500, 300);
+
+                        pincel.beginPath();
+                        for (let x = 0; x <= 500; x++) {
+                          let y = wheight + y0 * Math.sin(k * x - w * t);
+                          pincel.lineTo(x, y);
+                        }
+                        pincel.lineTo(500, 0);
+                        pincel.lineTo(0, 0);
+                        pincel.closePath()
+
+                        pincel.fillStyle = "#7EBFD9";
+                        pincel.fill();
 
 
-    pincel.beginPath();
-    pincel.moveTo(0,100);
-    pincel.lineTo(500,100);
-    pincel.strokeStyle = "red";
-    pincel.stroke(); }
+                        t = t + dt;
+
+                        
+
+
+                    pincel.beginPath();
+                    pincel.moveTo(0,100);
+                    pincel.lineTo(500,100);
+                    pincel.strokeStyle = "red";
+                    pincel.stroke(); }
 
 
 
-      
+                      
 
-      setInterval("passo ()", 50);
+                      setInterval("passo ()", 50);
 
-  pincel.beginPath();
-  pincel.moveTo(510,200);
-  pincel.lineTo(510,0);
-  pincel.strokeStyle = "red";
-  pincel.stroke();
-  
-  function changeValues() {
-            wheight = 190;
-            cor = '#00000000';
-        }
+                  pincel.beginPath();
+                  pincel.moveTo(510,200);
+                  pincel.lineTo(510,0);
+                  pincel.strokeStyle = "red";
+                  pincel.stroke();
+                  
+                  function changeValues() {
+                            wheight = 190;
+                            cor = '#00000000';
+                        }
 
-  function changeValues2() {
-            wheight = 160;
-            cor = '#1e1438';
-        }
+                  function changeValues2() {
+                            wheight = 160;
+                            cor = '#1e1438';
+                        }
 
-    </script>
+                    </script>
 
-    <button type="button" id="btn5" class="btn-2" onclick="changeValues()">Maré de Sizigia</button>
-    <button type="button" id="btn6" class="btn-2" onclick="changeValues2()">Maré de Quadratura</button>
+                    <button type="button" id="btn5" class="btn-2" onclick="changeValues()">Maré de Sizigia</button>
+                    <button type="button" id="btn6" class="btn-2" onclick="changeValues2()">Maré de Quadratura</button>
 
-    </div>
+            </div>
 
     
     
