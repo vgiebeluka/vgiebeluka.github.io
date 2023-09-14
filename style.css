@@ -228,6 +228,10 @@ nav a:hover{
     margin-top: 20px;
 }
 
+.imggrav p {
+    flex-wrap: wrap;
+}
+
 .canvas {
     display: flex;
     flex-direction: column;
