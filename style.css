@@ -244,7 +244,7 @@ nav a:hover{
 
 canvas {
     border: 1px solid black;
-    background: linear-gradient(to top, #75caff 5%, #1e1438 85%);
+    background: linear-gradient(to top, #FFA732 35%, #75caff 85%);
 }
 
 footer {
