@@ -207,7 +207,7 @@ nav a:hover{
     text-justify: auto;
     overflow-wrap: break-word;
     font-size: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .conteudo h1 {
@@ -244,7 +244,7 @@ nav a:hover{
 
 canvas {
     border: 1px solid black;
-    background: linear-gradient(to top, #FFA732 35%, #75caff 85%);
+    background: linear-gradient(to top, #FFA732 5%, #75caff 50%);
 }
 
 footer {

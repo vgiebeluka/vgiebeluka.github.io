@@ -55,7 +55,7 @@
             
             <h2>Simulador</h2>
             <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>
-            <p>Dados retirados da tábua de marés de Pontal do Paraná em Setembro de 2020. <a href="https://tabuademares.com/br/parana/pontal-do-parana" " target="_blank">Acesse aqui a tábua de marés.</a></p>
+            <p>Dados retirados da tábua de marés de Pontal do Paraná em Setembro de 2020. <a href="https://tabuademares.com/br/parana/pontal-do-parana">Acesse aqui a tábua de marés.</a></p>
           </div>
           
           <div class="canvas"><canvas id="cnv" width="600" height="400"></canvas>
@@ -68,11 +68,11 @@
                       var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
                       pincel.fillStyle = 'grey'; // Muda a cor do pincel
-                      pincel.fillRect(500, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+                      pincel.fillRect(520, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
 
                       setInterval("sol()", 200);
 
-                      let cor = '#f9d71c';
+                      let cor = 'yellow';
                       let cor2 = '#00000000';
 
                       function sol() {
@@ -105,32 +105,28 @@
                         pincel.restore();
                       }
 
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("Ns  = 0,75",515,280);
-                      
-
+                
 
                       pincel.font = "10px Arial";
                       pincel.fillStyle = 'yellow';
-                      pincel.fillText("Nq  = 0,653",515,320);
+                      pincel.fillText("Nq  = 0,653",525,300);
                       
 
                       pincel.font = "10px Arial";
                       pincel.fillStyle = 'yellow';
-                      pincel.fillText("N   = 1,3",515,240);
-
-                      pincel.font = "7px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("máx",525,245);
+                      pincel.fillText("N = 1,0",525,240);
 
                       pincel.font = "10px Arial";
                       pincel.fillStyle = 'yellow';
-                      pincel.fillText("N   = -0,1",515,380);
+                      pincel.fillText("máx",525,250);
+
+                      pincel.font = "10px Arial";
+                      pincel.fillStyle = 'yellow';
+                      pincel.fillText("N = 0,1",525,350);
                   
-                      pincel.font = "7px Arial";
+                      pincel.font = "10px Arial";
                       pincel.fillStyle = 'yellow';
-                      pincel.fillText("mín",525,385);
+                      pincel.fillText("mín",525,360);
 
                     </script>
 
@@ -153,23 +149,23 @@
                       let w = 2 * Math.PI * 2;
                       let t = 0;
                       let dt = 0.01;
-                      let wheight = 160;
+                      let wheight = 60;
                       let increasing = true; // Variável para controlar se estamos aumentando ou diminuindo
 
 
                       function passo() {
-                        pincel.clearRect(0, 0, 500, 300);
+                        pincel.clearRect(0, 0, 520, 300);
 
                         pincel.beginPath();
-                        for (let x = 0; x <= 500; x++) {
+                        for (let x = 0; x <= 520; x++) {
                           let y = wheight + y0 * Math.sin(k * x - w * t);
                           pincel.lineTo(x, y);
                         }
-                        pincel.lineTo(500, 0);
+                        pincel.lineTo(520, 0);
                         pincel.lineTo(0, 0);
                         pincel.closePath()
 
-                        pincel.fillStyle = "#7B66FF";
+                        pincel.fillStyle = "navy";
                         pincel.fill();
 
 
@@ -177,7 +173,7 @@
 
                     pincel.beginPath();
                     pincel.moveTo(0,100);
-                    pincel.lineTo(500,100);
+                    pincel.lineTo(520,100);
                     pincel.strokeStyle = "red";
                     pincel.stroke(); 
                   
@@ -187,8 +183,8 @@
                     passo ()
 
                   pincel.beginPath();
-                  pincel.moveTo(510,200);
-                  pincel.lineTo(510,0);
+                  pincel.moveTo(520,200);
+                  pincel.lineTo(520,0);
                   pincel.strokeStyle = "red";
                   pincel.stroke();
 
@@ -196,43 +192,18 @@
                   function changeValues() {
                     if (increasing) {
                         wheight += 1;
-                        if (wheight >= 190) {
+                        if (wheight >= 160) {
                             increasing = false;
-                        } else if (wheight >= 180) {
-                            cor = '#fff';
-                            cor2 = '#1e1438'
-                            gradient = 'linear-gradient(to top, #75caff 5%, #1e1438 85%)';
-                            changeCanvasBackground();
-                        } else if (wheight >= 175) {
-                            cor = '#f9d71c';
-                            cor2 = '#00000000'
-                            gradient = 'linear-gradient(to top, #FFA732 35%, #75caff 85%)';
-                            changeCanvasBackground();
-                        }
+                        } 
                     } else {
                         wheight -= 1;
-                        if (wheight <= 160) {
+                        if (wheight <= 60) {
                             increasing = true;
-                        } else if (wheight <= 180) {
-                            cor = '#f9d71c';
-                            cor2 = '#00000000'
-                            gradient = 'linear-gradient(to top, #FFA732 35%, #75caff 85%)';
-                            changeCanvasBackground();
-                        } else if (wheight <= 175) {
-                            cor = '#fff';
-                            cor2 = '#1e1438'
-                            gradient = 'linear-gradient(to top, #75caff 5%, #1e1438 85%)';
-                            changeCanvasBackground();
-                        }
+                        } 
                     }
                 }
 
-                function changeCanvasBackground() {
-                    // Assuming 'cnv' is the id of your canvas
-                    document.getElementById('cnv').style.background = gradient;
-                }
-
-
+            
 
                 function runLoop() {
 
@@ -244,9 +215,9 @@
 
                         iteration++;
 
-                        if (iteration < 300) {
+                        if (iteration < 3000) {
                             // Adjust the delay (in milliseconds) as needed
-                            setTimeout(loopIteration, 100); // 1000 milliseconds = 1 second
+                            setTimeout(loopIteration, 50); // 1000 milliseconds = 1 second
                         }
                     }
 
