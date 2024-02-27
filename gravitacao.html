@@ -62,181 +62,178 @@
           
     <!--Cria uma área para desenhar -->
 
-                    <script>
+    <script>
 
-                      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
-                      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
+      var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
-                      pincel.fillStyle = 'grey'; // Muda a cor do pincel
-                      pincel.fillRect(520, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+      pincel.fillStyle = 'grey'; // Muda a cor do pincel
+      pincel.fillRect(520, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
 
-                      setInterval("sol()", 200);
+      setInterval("sol()", 200);
 
-                      let cor = 'yellow';
-                      let cor2 = '#00000000';
+      let cor = 'yellow';
+      let cor2 = '#00000000';
 
-                      function sol() {
-                        //SOL
-                        pincel.clearRect(50, 300, 150, 350);
+      function sol() {
+        //SOL
+        pincel.clearRect(50, 300, 150, 350);
 
-                        pincel.beginPath();
-                        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
-                        pincel.fillStyle = cor ;
-                        pincel.fill(); //preenche a figura
+        pincel.beginPath();
+        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = cor ;
+        pincel.fill(); //preenche a figura
 
-                        pincel.beginPath();
-                        pincel.arc(110, 350, 35, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
-                        pincel.fillStyle = cor2 ;
-                        pincel.fill(); //preenche a figura
-
-
-                        pincel.save();
-                        pincel.translate(100, 350);
-
-                        for (let i = 36; i < 36; i++) {
-                          pincel.rotate(Math.PI / 18);
-                          pincel.beginPath();
-                          pincel.moveTo(30, 0);
-                          pincel.lineTo(30 + 10 * Math.random(), 0);
-                          pincel.strokeStyle = "skyblue";
-                          pincel.lineWidth = 50;
-                          pincel.stroke();
-                        }
-                        pincel.restore();
-                      }
-
-                
-
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("Nq  = 0,653",525,300);
-                      
-
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("N = 1,0",525,240);
-
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("máx",525,250);
-
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("N = 0,1",525,350);
-                  
-                      pincel.font = "10px Arial";
-                      pincel.fillStyle = 'yellow';
-                      pincel.fillText("mín",525,360);
-
-                    </script>
-
-                    <script>
-                      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
-                      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
-
-                      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
-
-                      /*
-                      y = y0 * Math.sin(k * x - w * t)
-                      k: número de onda (kapa: k = 2 pi / lambda)
-                      w: frequência angular (omega: w = 2 pi * f)
-                      w positivo, onda progressiva
-                      w negativo, onda regressiva
-                      */
-
-                      let y0 = 2;
-                      let k = 2 * Math.PI / 300;
-                      let w = 2 * Math.PI * 2;
-                      let t = 0;
-                      let dt = 0.01;
-                      let wheight = 60;
-                      let increasing = true; // Variável para controlar se estamos aumentando ou diminuindo
+        pincel.beginPath();
+        pincel.arc(110, 350, 35, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.fillStyle = cor2 ;
+        pincel.fill(); //preenche a figura
 
 
-                      function passo() {
-                        pincel.clearRect(0, 0, 520, 300);
+        pincel.save();
+        pincel.translate(100, 350);
 
-                        pincel.beginPath();
-                        for (let x = 0; x <= 520; x++) {
-                          let y = wheight + y0 * Math.sin(k * x - w * t);
-                          pincel.lineTo(x, y);
-                        }
-                        pincel.lineTo(520, 0);
-                        pincel.lineTo(0, 0);
-                        pincel.closePath()
-
-                        pincel.fillStyle = "navy";
-                        pincel.fill();
-
-
-                        t = t + dt;
-
-                    pincel.beginPath();
-                    pincel.moveTo(0,100);
-                    pincel.lineTo(520,100);
-                    pincel.strokeStyle = "red";
-                    pincel.stroke(); 
-                  
-                    requestAnimationFrame(passo);
-                  }
-
-                    passo ()
-
-                  pincel.beginPath();
-                  pincel.moveTo(520,200);
-                  pincel.lineTo(520,0);
-                  pincel.strokeStyle = "red";
-                  pincel.stroke();
+        for (let i = 36; i < 36; i++) {
+          pincel.rotate(Math.PI / 18);
+          pincel.beginPath();
+          pincel.moveTo(30, 0);
+          pincel.lineTo(30 + 10 * Math.random(), 0);
+          pincel.strokeStyle = "skyblue";
+          pincel.lineWidth = 50;
+          pincel.stroke();
+        }
+        pincel.restore();
+      }
 
 
-                  function changeValues() {
-                    if (increasing) {
-                        wheight += 1;
-                        if (wheight >= 160) {
-                            increasing = false;
-                        } 
-                    } else {
-                        wheight -= 1;
-                        if (wheight <= 60) {
-                            increasing = true;
-                        } 
-                    }
-                }
 
-            
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("Nq  = 0,653 m",525,300);
+      
 
-                function runLoop() {
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N = 1,0 m",525,240);
 
-                    let iteration = 0;
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("máx",525,250);
 
-                    function loopIteration() {
-                        changeValues();
-                        console.log(`Iteration ${iteration + 1}: wheight = ${wheight}, cor = ${cor}`);
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("N = 0,1 m  ",525,350);
+  
+      pincel.font = "10px Arial";
+      pincel.fillStyle = 'yellow';
+      pincel.fillText("mín",525,360);
 
-                        iteration++;
+    </script>
 
-                        if (iteration < 3000) {
-                            // Adjust the delay (in milliseconds) as needed
-                            setTimeout(loopIteration, 50); // 1000 milliseconds = 1 second
-                        }
-                    }
+    <script>
+      var cnv = document.querySelector("canvas"); // chama a tag canvas para trabalhar em Java
+      var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
-                    // Example usages
-                    loopIteration();
-                }
+      pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
 
-                    </script>
+      /*
+      y = y0 * Math.sin(k * x - w * t)
+      k: número de onda (kapa: k = 2 pi / lambda)
+      w: frequência angular (omega: w = 2 pi * f)
+      w positivo, onda progressiva
+      w negativo, onda regressiva
+      */
 
+      let y0 = 2;
+      let k = 2 * Math.PI / 300;
+      let w = 2 * Math.PI * 2;
+      let t = 0;
+      let dt = 0.01;
+      let wheight = 60;
+      let increasing = true; // Variável para controlar se estamos aumentando ou diminuindo
+
+
+      function passo() {
+        pincel.clearRect(0, 0, 520, 300);
+
+        pincel.beginPath();
+        for (let x = 0; x <= 520; x++) {
+          let y = wheight + y0 * Math.sin(k * x - w * t);
+          pincel.lineTo(x, y);
+        }
+        pincel.lineTo(520, 0);
+        pincel.lineTo(0, 0);
+        pincel.closePath()
+
+        pincel.fillStyle = "navy";
+        pincel.fill();
+
+
+        t = t + dt;
+
+    pincel.beginPath();
+    pincel.moveTo(0,100);
+    pincel.lineTo(520,100);
+    pincel.strokeStyle = "red";
+    pincel.stroke(); 
+  
+    requestAnimationFrame(passo);
+  }
+
+    passo ()
+
+  pincel.beginPath();
+  pincel.moveTo(520,200);
+  pincel.lineTo(520,0);
+  pincel.strokeStyle = "red";
+  pincel.stroke();
+
+
+  function changeValues() {
+    if (increasing) {
+        wheight += 1;
+        if (wheight >= 160) {
+            increasing = false;
+        } 
+    } else {
+        wheight -= 1;
+        if (wheight <= 60) {
+            increasing = true;
+        } 
+    }
+}
+
+
+
+function runLoop() {
+
+    let iteration = 0;
+
+    function loopIteration() {
+        changeValues();
+        console.log(`Iteration ${iteration + 1}: wheight = ${wheight}, cor = ${cor}`);
+
+        iteration++;
+
+        if (iteration < 3000) {
+            // Adjust the delay (in milliseconds) as needed
+            setTimeout(loopIteration, 50); // 1000 milliseconds = 1 second
+        }
+    }
+
+    // Example usages
+    loopIteration();
+}
+
+    </script>
 
                     <button type="button" id="btn5" class="btn-2" onclick="runLoop()">Simulador</button>
 
-                    <p>Nmáx: Nível Máximo da Maré de Sizigia no mês de Setembro<br>
+                    <p>Nmáx: Nível Máximo da Maré de Quadratura no mês de Setembro<br>
                       
-                      Nmin: Nível Mínimo da Maré no mês de Setembro<br>
+                      Nmin: Nível Mínimo da Maré de Quadratura no mês de Setembro<br>
                       
-                      Ns: Nível Médio da Maré de Sizigia no mês de Setembro<br>
-                      
-                      Ns: Nível Médio da Maré de Quadratura no mês de Setembro</p>
+                      Nq: Nível Médio da Maré de Quadratura no mês de Setembro</p>
 
             </div>
 
