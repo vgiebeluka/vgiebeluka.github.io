@@ -202,7 +202,7 @@ nav a:hover{
 }
 
 .conteudo {
-    width: 60%;
+    width: 65%;
     margin: auto;
     text-align: justify;
     text-justify: auto;
@@ -253,6 +253,13 @@ nav a:hover{
 canvas {
     border: 1px solid black;
     background: linear-gradient(to top, #FFA732 5%, #75caff 50%);
+}
+
+#sim_mares {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 footer {

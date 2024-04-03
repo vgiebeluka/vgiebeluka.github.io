@@ -56,8 +56,15 @@
             <h2>Simulador</h2>
             <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>
             <p>Dados retirados da tábua de marés de Pontal do Paraná em Setembro de 2020. <a href="https://tabuademares.com/br/parana/pontal-do-parana">Acesse aqui a tábua de marés.</a></p>
+            <div id="sim_mares"> <iframe src="tides/dist/tides.html" frameborder="0" width="1200px" height="1000px" ></iframe></div>
+            <p>O simulador a seguir mostra como as fases da lua interferem na maré, tendo como comparação a média das marés de sizigia (são as marés que acontecem na lua nova e na lua cheia) e de quadratura (são as marés que acontecem na lua crescente e minguante).</p>
+            <p>Dados retirados da tábua de marés de Pontal do Paraná em Setembro de 2020. <a href="https://tabuademares.com/br/parana/pontal-do-parana">Acesse aqui a tábua de marés.</a></p>
           </div>
+
           
+          
+          
+
           <div class="canvas"><canvas id="cnv" width="600" height="400"></canvas>
           
     <!--Cria uma área para desenhar -->
@@ -67,20 +74,49 @@
       var cnv = document.getElementById("cnv"); // chama a tag canvas para trabalhar em Java
       var pincel = cnv.getContext('2d'); //variável pincel em 2 dimenções 
 
-      pincel.fillStyle = 'grey'; // Muda a cor do pincel
-      pincel.fillRect(520, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
 
       setInterval("sol()", 200);
 
       let cor = 'yellow';
       let cor2 = '#00000000';
+      let x = 100;
 
       function sol() {
         //SOL
-        pincel.clearRect(50, 300, 150, 350);
+        pincel.clearRect(0, 0, cnv.width, cnv.height);
+
+      
+        pincel.setTransform(1, 0, 0, 1, 0, 0);
+
+        pincel.fillStyle = 'grey'; // Muda a cor do pincel
+        pincel.fillRect(520, 200, 100, 400); // Cria um retângulo de 200 x 400 a partir da posição 400 em x
+
+        
+        pincel.font = "10px Arial";
+        pincel.fillStyle = 'yellow';
+        pincel.fillText("Nq  = 0,653 m",525,300);
+        
+
+        pincel.font = "10px Arial";
+        pincel.fillStyle = 'yellow';
+        pincel.fillText("N = 1,0 m",525,240);
+
+        pincel.font = "10px Arial";
+        pincel.fillStyle = 'yellow';
+        pincel.fillText("máx",525,250);
+
+        pincel.font = "10px Arial";
+        pincel.fillStyle = 'yellow';
+        pincel.fillText("N = 0,1 m  ",525,350);
+    
+        pincel.font = "10px Arial";
+        pincel.fillStyle = 'yellow';
+        pincel.fillText("mín",525,360);
+
+        pincel.setTransform(1, 0, 0, -1, 0, cnv.height);
 
         pincel.beginPath();
-        pincel.arc(100, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
+        pincel.arc(x, 350, 40, 0, 2 * Math.PI, 0); // Cria um circulo nas coordenadas (x,y, raio, angulo inicial, angulo final)
         pincel.fillStyle = cor ;
         pincel.fill(); //preenche a figura
 
@@ -103,6 +139,8 @@
           pincel.stroke();
         }
         pincel.restore();
+
+        
       }
 
 
@@ -201,28 +239,40 @@
             increasing = true;
         } 
     }
-}
+   
+        x += 0.1;
+        if (x >= 600) {
+            x = 0;
+        } 
+    } 
 
 
+
+
+let isLoopRunning = false; // Flag to track if the loop is already running
 
 function runLoop() {
+    if (!isLoopRunning) {
+        isLoopRunning = true; // Set the flag to true to indicate the loop is running
 
-    let iteration = 0;
+        let iteration = 0;
 
-    function loopIteration() {
-        changeValues();
-        console.log(`Iteration ${iteration + 1}: wheight = ${wheight}, cor = ${cor}`);
+        function loopIteration() {
+            changeValues();
+            console.log(`Iteration ${iteration + 1}: wheight = ${wheight}, cor = ${cor}`);
 
-        iteration++;
+            iteration++;
 
-        if (iteration < 3000) {
-            // Adjust the delay (in milliseconds) as needed
-            setTimeout(loopIteration, 50); // 1000 milliseconds = 1 second
+            if (iteration < 3000) {
+                // Adjust the delay (in milliseconds) as needed
+                setTimeout(loopIteration, 20); // 1000 milliseconds = 1 second
+            } else {
+                isLoopRunning = false; // Reset the flag when the loop completes
+            }
         }
-    }
 
-    // Example usages
-    loopIteration();
+        loopIteration();
+    }
 }
 
     </script>
@@ -234,6 +284,8 @@ function runLoop() {
                       Nmin: Nível Mínimo da Maré de Quadratura no mês de Setembro<br>
                       
                       Nq: Nível Médio da Maré de Quadratura no mês de Setembro</p>
+
+                     
 
             </div>
 
