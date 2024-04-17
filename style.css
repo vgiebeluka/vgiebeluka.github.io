@@ -257,9 +257,13 @@ canvas {
 
 #sim_mares {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#sim_mares p {
+    flex-wrap: wrap;
 }
 
 footer {
@@ -277,4 +281,15 @@ footer {
     canvas {
         max-width: 90%;
     }
+    #sim_mares iframe {
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        height: 1100px;
+        width: 90%;
+    }
+    
   }

@@ -1,0 +1,19 @@
+@media screen and (max-aspect-ratio: 1/1) {
+    
+    
+
+    .noborder {
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+
+    #cvTides2 {
+        width: 350px;
+        height: 350px;
+    }
+    
+  }

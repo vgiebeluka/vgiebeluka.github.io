@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
+  <link rel="stylesheet" href="tidestyle.css">
 </head>
 
 <body>
@@ -9,61 +10,61 @@
     <table class="noborder">
       <tr>
         <td  class="noborder">
-          <canvas id="cvTides2" width="800" height="800"></canvas>
+          <canvas id="cvTides2" width="700" height="700"></canvas>
         </td>
 
         <td class="noborder">	
-          <form> 
-            <h2>Animation Settings</h2> 
-            <fieldset>
-                <b>Run / Stop</b><br/>
-                <button type="button" id="btnRun"        onClick="onClickRunStop()" style="width:120px; height:50px;">Run</button>
-                <button type="button" id="btnNeapTide"   onClick="onClickNeapTide()" style="width:120px; height:50px;">Neap Tide</button>
-                <button type="button" id="btnSpringTide" onClick="onClickSpringTide()" style="width:120px; height:50px;">Spring Tide</button>
+          <form > 
+            <h2>Configurações</h2> 
+            <fieldset >
+                <b>Iniciar / Parar</b><br/>
+                <button type="button" id="btnRun"        onClick="onClickRunStop()" style="width:150px; height:50px;">Iniciar</button>
+                <button type="button" id="btnNeapTide"   onClick="onClickNeapTide()" style="width:150px; height:50px;">Maré de quadratura</button>
+                <button type="button" id="btnSpringTide" onClick="onClickSpringTide()" style="width:150px; height:50px;">Maré de sizígia</button>
             </fieldset>
 
-            <fieldset> 
-              <b>Look at</b> 
+            <fieldset > 
+              <b>Exibir</b> 
               <select id="cbViewPoint" name="viewpoint" onChange="onChangeViewPoint()">
-	        <option value="Earth">Earth</option>
-                <option value="CenterOfMass">Center of Mass</option>
+	        <option value="Earth">Terra</option>
+                <option value="CenterOfMass">Centro de massa</option>
               </select>
             </fieldset>
 
             <fieldset>  
-              <b>Render Features</b><br/>
+              <b>Elementos da simulação</b><br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbShowOrbits"        onChange="onShowOrbits()"/> 
-              Show Orbits<br/>
+              Exibir órbitas<br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbShowMoon"   onChange="onShowMoon()"/> 
-              Show Moon<br/>
+              Exibir Lua<br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbShowSun"    onChange="onShowSun()"/> 
-              Show Sun<br/>
+              Exibir Sol<br/>
             </fieldset>
 
             <fieldset>  
-	      <b>Force display</b><br/>
+	      <b>Exibir forças</b><br/>
               <input type="checkbox"  name="force" value="true" id="cbShowTidalAcc"      onChange="onShowTidalAcc()"/>
-              Show Tidal Acceleration (Moon)<br/>
+              Mostrar Aceleração das Marés (Lua)<br/>
               <input type="checkbox"  name="force" value="true" id="cbShowTidalAccSun"   onChange="onShowTidalAccSun()"/>
-              Show Tidal Acceleration (Sun)<br/>
+              Mostrar Aceleração das Marés (Sol)<br/>
               <input type="checkbox"  name="force" value="true" id="cbShowOcean"         onChange="onShowOcean()"/>
-              Show Ocean<br/>
+              Mostrar Oceano<br/>
               <input type="checkbox"  name="force" value="true" id="cbShowGravAcc"       onChange="onShowGravAcc()"/>
-              Show Gravitational Acceleration (Moon)<br/>
+              Mostrar Aceleração Gravitacional (Lua)<br/>
               <input type="checkbox"  name="force" value="true" id="cbShowCentAcc"       onChange="onShowCentAcc()"/>
-              Show Centrifugal Acceleration<br/>
+              Mostrar Aceleração Centrífuga<br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbShowSurfacePoints" onChange="onShowSurfacePoints()"/> 
-              Show Centrifugal Acceleration Sample Points<br/>
+              Mostrar Pontos de Amostragem de Aceleração Centrífuga<br/>
               <input type="checkbox"  name="force" value="true" id="cbScaleForceToModel" onChange="onScaleForceToModel()"/>
-              Match Vector Directions to Model Scale<br/>
+              Corresponder direções de vetores à escala do modelo<br/>
             </fieldset>
 
             <fieldset>  
-              <b>Misc</b><br/>
+              <b>Opções</b><br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbEnableRotation"        onChange="onEnableRotation()"/> 
-              Enable Rotation<br/>
+              Habilitar rotação<br/>
               <input type="checkbox"  name="show orbits" value="true" id="cbShowBackgoundImage"    onChange="onShowBackgroundImage()"/> 
-              Show Background Image<br/>
+              Exibir imagem de fundo<br/>
             </fieldset>
 
           </form>
@@ -77,7 +78,7 @@
     var tidalModel = window.TidalSimulationLibrary.createTidalSimulation({	
         cvid				: 'cvTides2',
         path	 			: './',	
-        timestep	        : 86400/10,
+        timestep	        : 86400/200,
         lookAtTarget	    : 'CenterOfMass',
         autoMove	        : true,
         setup		      	: 1,
