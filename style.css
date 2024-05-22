@@ -250,7 +250,7 @@ nav a:hover{
     margin-bottom: 50px;
 }
 
-canvas {
+#cnv {
     border: 1px solid black;
     background: linear-gradient(to top, #FFA732 5%, #75caff 50%);
 }
@@ -265,6 +265,8 @@ canvas {
 #sim_mares p {
     flex-wrap: wrap;
 }
+
+
 
 footer {
     margin-top: auto;

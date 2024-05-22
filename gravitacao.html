@@ -65,7 +65,13 @@
           
           
 
-          <div class="canvas"><canvas id="cnv" width="600" height="400"></canvas>
+          <div class="canvas">
+            <canvas id="cnv" width="600" height="400">
+            
+          </canvas>
+          <div>
+            <canvas id="graph" width="600" height="200" style="border:1px solid #000000; display:block; margin-top: 20px;"></canvas>
+          </div>
           
     <!--Cria uma área para desenhar -->
 
@@ -182,6 +188,11 @@
       w negativo, onda regressiva
       */
 
+
+      let graphCnv = document.getElementById("graph");
+      let graphPincel = graphCnv.getContext('2d');
+      graphPincel.setTransform(1, 0, 0, -1, 0, graphCnv.height);
+
       let y0 = 2;
       let k = 2 * Math.PI / 300;
       let w = 2 * Math.PI * 2;
@@ -189,6 +200,27 @@
       let dt = 0.01;
       let wheight = 60;
       let increasing = true; // Variável para controlar se estamos aumentando ou diminuindo
+      let wheightHistory = [];  
+
+      function drawGraph() {
+    graphPincel.clearRect(0, 0, graphCnv.width, graphCnv.height);
+
+    graphPincel.beginPath();
+    graphPincel.moveTo(0, wheightHistory[0] || 0);
+    for (let i = 0; i < wheightHistory.length; i++) {
+      graphPincel.lineTo(i, wheightHistory[i]);
+    }
+    graphPincel.strokeStyle = "navy";
+    graphPincel.stroke();
+
+    if (wheightHistory.length > graphCnv.width) {
+      wheightHistory.shift(); // Remove o primeiro elemento quando o array é maior que a largura do canvas
+    }
+
+    requestAnimationFrame(drawGraph);
+  }
+
+  drawGraph();
 
 
       function passo() {
@@ -244,6 +276,7 @@
         if (x >= 600) {
             x = 0;
         } 
+         wheightHistory.push(wheight);
     } 
 
 
@@ -272,6 +305,7 @@ function runLoop() {
         }
 
         loopIteration();
+        
     }
 }
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pressão Atmosférica e Hidrostática</title>
+<style>
+   
+    #tela {
+        border: 1px solid black;
+        background-image: url(/img/Pressão.jpg);
+        background-size: contain;
+        max-width: 1000px;
+    }
+
+</style>
+</head>
+<body>
+<div>
+    <label for="altitude">Altitude (km): </label>
+    <input type="number" id="altitude" value="0">
+</div>
+<div>
+    <label for="pressure">Pressão (Pa): </label>
+    <span id="displayPressao">-</span>
+</div>
+<canvas id="tela" width="1000" height="540"></canvas>
+<div id="exibicaoValor"></div>
+<div id="exibicaoValor2"></div>
+
+<script>
+    // Constantes para o cálculo da pressão atmosférica
+    const P0 = 101325; // Pressão atmosférica padrão ao nível do mar (Pa)
+    const L = 0.0065; // Taxa de variação da temperatura (K/m)
+    const T0 = 288.15; // Temperatura padrão ao nível do mar (K)
+    const g = 9.80665; // Aceleração devido à gravidade (m/s^2)
+    const M = 0.0289644; // Massa molar do ar da Terra (kg/mol)
+    const R = 8.31447; // Constante universal dos gases (J/(mol*K))
+
+    // Constantes para o cálculo da pressão hidrostática
+    const rho = 1000; // Densidade da água (kg/m^3)
+    const gAgua = 9.81; // Aceleração devido à gravidade para a água (m/s^2)
+
+    // Obter o elemento canvas e seu contexto
+    const tela = document.getElementById('tela');
+    const contexto = tela.getContext('2d');
+    const exibicaoValor = document.getElementById('exibicaoValor');
+    const exibicaoValor2 = document.getElementById('exibicaoValor2');
+    const entradaAltitude = document.getElementById('altitude');
+    const exibicaoPressao = document.getElementById('displayPressao');
+
+    // Propriedades da barra
+    const larguraBarra = 10; // Largura da barra
+    const metadeAlturaCanvas = tela.height / 2; // Metade da altura do canvas
+    let posYBarra = metadeAlturaCanvas; // Posição Y inicial da barra
+    let valorBarra = 0; // Valor inicial
+    let valorBarra2 = 0; // Valor inicial 2
+
+    // Função para desenhar a barra
+    function desenharBarra() {
+        contexto.clearRect(0, 0, tela.width, tela.height);
+        contexto.fillStyle = 'blue';
+        contexto.fillRect(0, posYBarra - (larguraBarra / 2), tela.width, larguraBarra);
+    }
+
+    // Função para atualizar os valores com base na posição da barra
+    function atualizarValores() {
+        // Calcular o valor com base na posição da barra em relação à altura do canvas
+        const maxPosicao = metadeAlturaCanvas - (larguraBarra / 2); // Posição máxima
+        if (posYBarra < metadeAlturaCanvas) {
+            // Acima do meio: usar fórmula da pressão atmosférica
+            valorBarra = Math.round(((metadeAlturaCanvas - posYBarra) / maxPosicao) * 10);
+            const altitude = valorBarra;
+            const pressao = P0 * Math.pow((1 - (L * altitude * 1000) / T0), ((g * M) / (R * L)));
+            exibicaoPressao.textContent = pressao.toFixed(0); // Mostrar pressão com menos casas decimais
+        } else {
+            // Abaixo do meio: usar fórmula da pressão hidrostática
+            valorBarra = Math.max(1, Math.round(((posYBarra - metadeAlturaCanvas) / maxPosicao) * 10));
+            const profundidade = valorBarra;
+            const pressao = (rho * gAgua * profundidade * 1000) + 1e5 * profundidade;
+            exibicaoPressao.textContent = pressao.toFixed(0); // Mostrar pressão com menos casas decimais
+        }
+
+        valorBarra2 = valorBarra;
+
+        // Exibir os valores
+        exibicaoValor.textContent = `Valor 1: ${valorBarra}`;
+        exibicaoValor2.textContent = `Valor 2: ${valorBarra2}`;
+
+        // Atualizar o input de altitude com o Valor 1
+        entradaAltitude.value = valorBarra;
+    }
+
+    // Evento de escuta para o movimento do mouse
+    tela.addEventListener('mousemove', function(event) {
+        // Calcular a nova posição da barra com base na coordenada Y do mouse
+        posYBarra = event.clientY - tela.getBoundingClientRect().top;
+        // Garantir que a barra permaneça dentro dos limites do canvas
+        posYBarra = Math.min(Math.max(posYBarra, larguraBarra / 2), tela.height - larguraBarra / 2);
+        // Atualizar os valores
+        atualizarValores();
+        // Redesenhar o canvas
+        desenharBarra();
+    });
+
+    // Desenho inicial
+    desenharBarra();
+</script>
+</body>
+</html>
