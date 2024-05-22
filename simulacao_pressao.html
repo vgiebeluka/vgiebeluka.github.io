@@ -44,110 +44,87 @@
 
     // Tabela de altitude e temperatura
     const tabela = [
-        { x: 0, y: 15 },
-        { x: 1000, y: 8.5 },
-        { x: 2000, y: 2 },
-        { x: 3000, y: -4.5 },
-        { x: 4000, y: -11 },
-        { x: 5000, y: -17.5 },
-        { x: 6000, y: -24 },
-        { x: 7000, y: -30.5 },
-        { x: 8000, y: -37 },
-        { x: 9000, y: -41.875 },
-        { x: 10000, y: -46.75 }
-    ];
+    { x: 0, y: 15 },
+    { x: 1000, y: 8.5 },
+    { x: 2000, y: 2 },
+    { x: 3000, y: -4.5 },
+    { x: 4000, y: -11 },
+    { x: 5000, y: -17.5 },
+    { x: 6000, y: -24 },
+    { x: 7000, y: -30.5 },
+    { x: 8000, y: -37 },
+    { x: 9000, y: -41.875 },
+    { x: 10000, y: -46.75 }
+];
 
-    // Obter o elemento canvas e seu contexto
-    const tela = document.getElementById('tela');
-    const contexto = tela.getContext('2d');
-    const exibicaoValores = document.getElementById('exibicaoValores');
-    const entradaAltitude = document.getElementById('altitude');
-    const exibicaoPressao = document.getElementById('displayPressao');
-    const exibicaoTemp = document.getElementById('displayTemp');
-    const altprof = document.getElementById('altprof');
+const tela = document.getElementById('tela');
+const contexto = tela.getContext('2d');
+const exibicaoValores = document.getElementById('exibicaoValores');
+const entradaAltitude = document.getElementById('altitude');
+const exibicaoPressao = document.getElementById('displayPressao');
+const exibicaoTemp = document.getElementById('displayTemp');
+const altprof = document.getElementById('altprof');
 
-    // Propriedades da barra
-    const larguraBarra = 3; // Largura da barra
-    const metadeAlturaCanvas = tela.height / 2; // Metade da altura do canvas
-    let posYBarra = metadeAlturaCanvas; // Posição Y inicial da barra
-    let valorBarra = 0; // Valor inicial
-    let valorBarra2 = 0; // Valor inicial 2
+const larguraBarra = 3;
+const metadeAlturaCanvas = tela.height / 2;
+let posYBarra = metadeAlturaCanvas;
+let valorBarra = 0;
+let valorBarra2 = 0;
 
-    // Função para desenhar a barra
-    function desenharBarra() {
-        contexto.clearRect(0, 0, tela.width, tela.height);
-        contexto.fillStyle = 'red';
-        contexto.fillRect(0, posYBarra - (larguraBarra / 2), tela.width, larguraBarra);
-    }
+function desenharBarra() {
+    contexto.clearRect(0, 0, tela.width, tela.height);
+    contexto.fillStyle = 'red';
+    contexto.fillRect(0, posYBarra - (larguraBarra / 2), tela.width, larguraBarra);
+}
 
-    // Função para atualizar os valores com base na posição da barra
-    function atualizarValores() {
-    // Calcular o valor com base na posição da barra em relação à altura do canvas
-    const maxPosicao = metadeAlturaCanvas - (larguraBarra / 2); // Posição máxima
-    let temperatura; // Declarar a variável temperatura aqui
+function atualizarValores() {
+    const maxPosicao = metadeAlturaCanvas - (larguraBarra / 2);
+    let temperatura;
 
     if (posYBarra < metadeAlturaCanvas) {
-        // Acima do meio: usar fórmula da pressão atmosférica com temperatura variável
         valorBarra = Math.round(((metadeAlturaCanvas - posYBarra) / maxPosicao) * 10000);
         const altitude = valorBarra;
-        temperatura = interpolarTemperatura(altitude); // Calcular a temperatura variável
+        temperatura = interpolarTemperatura(altitude);
         const pressao = P0 * Math.exp((-g * M * altitude ) / (R * (temperatura + 273.15)));
-        exibicaoPressao.textContent = pressao.toFixed(0); // Mostrar pressão sem casas decimais
+        exibicaoPressao.textContent = pressao.toFixed(0);
         displayTemp.textContent = temperatura.toFixed(1);
         altprof.textContent = "Altitude (m)";
     } else {
-        // Abaixo do meio: usar fórmula da pressão hidrostática
         valorBarra = Math.max(1, Math.round(((posYBarra - metadeAlturaCanvas) / maxPosicao) * 10000));
         const profundidade = valorBarra;
         const pressao = (rho * gAgua * profundidade) + 1e5 * profundidade;
-        exibicaoPressao.textContent = pressao.toFixed(0); // Mostrar pressão sem casas decimais
+        exibicaoPressao.textContent = pressao.toFixed(0);
         temperatura = 2;
         displayTemp.textContent = temperatura.toFixed(0);
         altprof.textContent = "Profundidade (m)";
     }
 
     valorBarra2 = -valorBarra;
-
-    // Exibir os valores
-
-    /*
-    exibicaoValores.innerHTML = `Altitude (m): ${valorBarra} - `;
-    if (posYBarra < metadeAlturaCanvas) {
-        exibicaoValores.innerHTML += `Temperatura (°C): ${temperatura.toFixed(1)}<br>`;
-    } else {
-        exibicaoValores.innerHTML += `Temperatura (°C): 2<br>`; 
-    } */
-
-    // Atualizar o input de altitude com o Valor 1
     entradaAltitude.value = valorBarra;
 }
 
-
-    // Função para interpolar temperatura com base na altitude
-    function interpolarTemperatura(altitude) {
-        for (let i = 0; i < tabela.length - 1; i++) {
-            if (altitude >= tabela[i].x && altitude < tabela[i + 1].x) {
-                const t1 = tabela[i].y;
-                const t2 = tabela[i + 1].y;
-                const x1 = tabela[i].x;
-                const x2 = tabela[i + 1].x;
-                return t1 + ((altitude - x1) / (x2 - x1)) * (t2 - t1);
-            }
+function interpolarTemperatura(altitude) {
+    for (let i = 0; i < tabela.length - 1; i++) {
+        if (altitude >= tabela[i].x && altitude < tabela[i + 1].x) {
+            const t1 = tabela[i].y;
+            const t2 = tabela[i + 1].y;
+            const x1 = tabela[i].x;
+            const x2 = tabela[i + 1].x;
+            return t1 + ((altitude - x1) / (x2 - x1)) * (t2 - t1);
         }
-        return tabela[tabela.length - 1].y;
     }
+    return tabela[tabela.length - 1].y;
+}
 
-    // Evento de escuta para o movimento do mouse
-    tela.addEventListener('mousemove', function(event) {
-        // Calcular a nova posição da barra com base na coordenada Y do mouse
-        posYBarra = event.clientY - tela.getBoundingClientRect().top;
-        // Garantir que a barra permaneça dentro dos limites do canvas
-        posYBarra = Math.min(Math.max(posYBarra, larguraBarra / 2), tela.height - larguraBarra / 2);
-        // Atualizar os valores
-        atualizarValores();
-        // Redesenhar o canvas
-        desenharBarra();
-    });
+tela.addEventListener('mousemove', function(event) {
+    posYBarra = event.clientY - tela.getBoundingClientRect().top;
+    posYBarra = Math.min(Math.max(posYBarra, larguraBarra / 2), tela.height - larguraBarra / 2);
+    atualizarValores();
+    desenharBarra();
+});
+
+desenharBarra();
+atualizarValores();
 
     // Desenho
     desenharBarra();
