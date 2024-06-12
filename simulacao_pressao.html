@@ -8,26 +8,50 @@
    
     #tela {
         border: 1px solid black;
-        background-image: url(/img/Pressão.jpg);
+        background-image: url(/img/Pressao02.jpg);
         background-size: contain;
         max-width: 1000px;
+    }
+
+    .displaynumeros {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 10px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        align-items: center;
+        
+    }
+
+    #unidadePressao {
+        width: 60px;
+        height: 40px;
+        font-size: 18px;
     }
 
 </style>
 </head>
 <body>
-<div>
-    <label for="altitude" id="altprof">Altitude (m): </label>
-    <input type="number" id="altitude" value="0">
-</div>
-<div>
-    <label for="pressure">Pressão (Pa): </label>
-    <span id="displayPressao">-</span>
-</div>
-<div>
-    <label for="temp">Temperatura (°C): </label>
-    <span id="displayTemp">-</span>
-</div>
+    <div class="displaynumeros">
+        <div>
+            <label for="altitude" id="altprof">Altitude (m): </label>
+            <span type="number" id="altitude">-</span>
+        </div>
+        <div>
+            <label for="pressure">Pressão <select name="unidadepressao" id="unidadePressao">
+                <option value="Pa">Pa</option>
+                <option value="KPa">KPa</option>
+                <option value="atm">atm</option>
+                <option value="Bar">Bar</option>
+            </select>: </label>
+            <span id="displayPressao">-</span>
+        </div>
+        <div>
+            <label for="temp">Temperatura (°C): </label>
+            <span id="displayTemp">-</span>
+        </div>
+    </div>
 <canvas id="tela" width="1000" height="540"></canvas>
 <div id="exibicaoValores"></div>
 
@@ -44,91 +68,121 @@
 
     // Tabela de altitude e temperatura
     const tabela = [
-    { x: 0, y: 15 },
-    { x: 1000, y: 8.5 },
-    { x: 2000, y: 2 },
-    { x: 3000, y: -4.5 },
-    { x: 4000, y: -11 },
-    { x: 5000, y: -17.5 },
-    { x: 6000, y: -24 },
-    { x: 7000, y: -30.5 },
-    { x: 8000, y: -37 },
-    { x: 9000, y: -41.875 },
-    { x: 10000, y: -46.75 }
-];
+        { x: 0, y: 15 },
+        { x: 1000, y: 8.5 },
+        { x: 2000, y: 2 },
+        { x: 3000, y: -4.5 },
+        { x: 4000, y: -11 },
+        { x: 5000, y: -17.5 },
+        { x: 6000, y: -24 },
+        { x: 7000, y: -30.5 },
+        { x: 8000, y: -37 },
+        { x: 9000, y: -41.875 },
+        { x: 10000, y: -46.75 }
+    ];
 
-const tela = document.getElementById('tela');
-const contexto = tela.getContext('2d');
-const exibicaoValores = document.getElementById('exibicaoValores');
-const entradaAltitude = document.getElementById('altitude');
-const exibicaoPressao = document.getElementById('displayPressao');
-const exibicaoTemp = document.getElementById('displayTemp');
-const altprof = document.getElementById('altprof');
+    // Seleção de elementos do DOM
+    const tela = document.getElementById('tela');
+    const contexto = tela.getContext('2d');
+    const exibicaoValores = document.getElementById('exibicaoValores');
+    const entradaAltitude = document.getElementById('altitude');
+    const exibicaoPressao = document.getElementById('displayPressao');
+    const exibicaoTemp = document.getElementById('displayTemp');
+    const altprof = document.getElementById('altprof');
+    const unidadePressao = document.getElementById('unidadePressao');
 
-const larguraBarra = 3;
-const metadeAlturaCanvas = tela.height / 2;
-let posYBarra = metadeAlturaCanvas;
-let valorBarra = 0;
-let valorBarra2 = 0;
+    // Definindo dimensões e variáveis iniciais
+    const larguraBarra = 8;
+    const metadeAlturaCanvas = tela.height / 2;
+    let posYBarra = metadeAlturaCanvas;
+    let valorBarra = 0;
+    let valorBarra2 = 0;
+    let pressaoAtual = 0;
 
-function desenharBarra() {
-    contexto.clearRect(0, 0, tela.width, tela.height);
-    contexto.fillStyle = 'red';
-    contexto.fillRect(0, posYBarra - (larguraBarra / 2), tela.width, larguraBarra);
-}
-
-function atualizarValores() {
-    const maxPosicao = metadeAlturaCanvas - (larguraBarra / 2);
-    let temperatura;
-
-    if (posYBarra < metadeAlturaCanvas) {
-        valorBarra = Math.round(((metadeAlturaCanvas - posYBarra) / maxPosicao) * 10000);
-        const altitude = valorBarra;
-        temperatura = interpolarTemperatura(altitude);
-        const pressao = P0 * Math.exp((-g * M * altitude ) / (R * (temperatura + 273.15)));
-        exibicaoPressao.textContent = pressao.toFixed(0);
-        displayTemp.textContent = temperatura.toFixed(1);
-        altprof.textContent = "Altitude (m)";
-    } else {
-        valorBarra = Math.max(1, Math.round(((posYBarra - metadeAlturaCanvas) / maxPosicao) * 10000));
-        const profundidade = valorBarra;
-        const pressao = (rho * gAgua * profundidade) + 1e5 * profundidade;
-        exibicaoPressao.textContent = pressao.toFixed(0);
-        temperatura = 2;
-        displayTemp.textContent = temperatura.toFixed(0);
-        altprof.textContent = "Profundidade (m)";
+    // Função para desenhar a barra no canvas
+    function desenharBarra() {
+        contexto.clearRect(0, 0, tela.width, tela.height);
+        contexto.fillStyle = 'red';
+        contexto.fillRect(0, posYBarra - (larguraBarra / 2), tela.width, larguraBarra);
     }
 
-    valorBarra2 = -valorBarra;
-    entradaAltitude.value = valorBarra;
-}
+    // Função para atualizar os valores de altitude/profundidade e pressão
+    function atualizarValores() {
+        const maxPosicao = metadeAlturaCanvas - (larguraBarra / 2);
+        let temperatura;
 
-function interpolarTemperatura(altitude) {
-    for (let i = 0; i < tabela.length - 1; i++) {
-        if (altitude >= tabela[i].x && altitude < tabela[i + 1].x) {
-            const t1 = tabela[i].y;
-            const t2 = tabela[i + 1].y;
-            const x1 = tabela[i].x;
-            const x2 = tabela[i + 1].x;
-            return t1 + ((altitude - x1) / (x2 - x1)) * (t2 - t1);
+        // Verificando se a posição da barra é acima ou abaixo da metade da altura do canvas
+        if (posYBarra < metadeAlturaCanvas) {
+            valorBarra = Math.round(((metadeAlturaCanvas - posYBarra) / maxPosicao) * 10000);
+            const altitude = valorBarra;
+            temperatura = interpolarTemperatura(altitude);
+            pressaoAtual = P0 * Math.exp((-g * M * altitude) / (R * (temperatura + 273.15)));
+            exibicaoPressao.textContent = pressaoAtual.toFixed(0);
+            exibicaoTemp.textContent = temperatura.toFixed(1);
+            altprof.textContent = "Altitude (m):";
+        } else {
+            valorBarra = Math.max(1, Math.round(((posYBarra - metadeAlturaCanvas) / maxPosicao) * 10000));
+            const profundidade = valorBarra;
+            pressaoAtual = (rho * gAgua * profundidade) + 1e5 * profundidade;
+            exibicaoPressao.textContent = pressaoAtual.toFixed(0);
+            temperatura = 2.0; // Temperatura constante para profundidade
+            exibicaoTemp.textContent = temperatura.toFixed(1);
+            altprof.textContent = "Profundidade (m):";
         }
+
+        valorBarra2 = -valorBarra;
+        entradaAltitude.textContent = valorBarra;
+        atualizarPressaoConvertida();
     }
-    return tabela[tabela.length - 1].y;
-}
 
-tela.addEventListener('mousemove', function(event) {
-    posYBarra = event.clientY - tela.getBoundingClientRect().top;
-    posYBarra = Math.min(Math.max(posYBarra, larguraBarra / 2), tela.height - larguraBarra / 2);
-    atualizarValores();
-    desenharBarra();
-});
+    // Função para interpolar a temperatura baseada na altitude
+    function interpolarTemperatura(altitude) {
+        for (let i = 0; i < tabela.length - 1; i++) {
+            if (altitude >= tabela[i].x && altitude < tabela[i + 1].x) {
+                const t1 = tabela[i].y;
+                const t2 = tabela[i + 1].y;
+                const x1 = tabela[i].x;
+                const x2 = tabela[i + 1].x;
+                return t1 + ((altitude - x1) / (x2 - x1)) * (t2 - t1);
+            }
+        }
+        return tabela[tabela.length - 1].y;
+    }
 
-desenharBarra();
-atualizarValores();
+    // Função para converter a pressão em diferentes unidades
+    function converterPressao(valor, unidade) {
+        const conversoes = {
+            'Pa': valor,
+            'KPa': valor / 1000,
+            'atm': valor / 101325,
+            'Bar': valor / 100000
+        };
+        return conversoes[unidade];
+    }
 
-    // Desenho
+    // Função para atualizar a exibição da pressão convertida
+    function atualizarPressaoConvertida() {
+        const unidade = unidadePressao.value;
+        const pressaoConvertida = converterPressao(pressaoAtual, unidade);
+        exibicaoPressao.textContent = pressaoConvertida.toFixed(2);
+    }
+
+    // Adiciona um evento para atualizar a pressão convertida quando a unidade é alterada
+    unidadePressao.addEventListener('change', atualizarPressaoConvertida);
+
+    // Adiciona um evento para atualizar a posição da barra e os valores quando o mouse é movido
+    tela.addEventListener('mousemove', function(event) {
+        posYBarra = event.clientY - tela.getBoundingClientRect().top;
+        posYBarra = Math.min(Math.max(posYBarra, larguraBarra / 2), tela.height - larguraBarra / 2);
+        atualizarValores();
+        desenharBarra();
+    });
+
+    // Inicializa o desenho da barra e os valores
     desenharBarra();
     atualizarValores();
 </script>
+
+
 </body>
 </html>
