@@ -211,7 +211,7 @@
           <canvas
             id="graph"
             width="600"
-            height="300"
+            height="240"
             style="border: 1px solid #000000; display: block; margin-top: 20px"
           ></canvas>
         </div>
@@ -279,18 +279,18 @@
 
           let t = 0; // Variável para acompanhar o tempo atual em horas
 
-          let yOffset = 60; // Valor de deslocamento vertical, ajuste conforme necessário
+          let yOffset = 20; // Valor de deslocamento vertical, ajuste conforme necessário
 
           // Função para calcular a altura da curva com base no tempo
           function calculateHeight(t) {
             if (t < 9.82) {
-              return 0.6 * Math.sin(t / 2.32 + 0.48) + 1.0;
+              return 0.6 * Math.sin(t / 2.32 + 0.48) + 1.3;
             } else if (t < 15.1) {
-              return 0.6 * Math.sin(t / 1.681 - 1.129) + 1.0;
+              return 0.6 * Math.sin(t / 1.681 - 1.129) + 1.3;
             } else if (t < 21.4) {
-              return 0.9 * Math.sin(t / 2.005 + 0.304) + 0.7;
+              return 0.9 * Math.sin(t / 2.005 + 0.304) + 1.0;
             } else {
-              return 0.9 * Math.sin(t / 1.147 - 20.23) + 0.7;
+              return 0.9 * Math.sin(t / 1.147 - 20.23) + 1.0;
             }
           }
 
@@ -305,7 +305,7 @@
               let height = calculateHeight((i * 24) / graphCnv.width); // Calcula a altura para cada posição x
               graphPincel.lineTo(i, height * 100 + yOffset); // Desenha linha até a altura calculada
             }
-            graphPincel.strokeStyle = "navy";
+            graphPincel.strokeStyle = "black";
             graphPincel.stroke();
 
             // Desenha círculo no gráfico baseado no tempo atual (t)
@@ -346,15 +346,11 @@
             setInterval(() => {
               changeValues();
               drawElements(); // Redesenha os elementos estáticos e dinâmicos
-            }, 20); // Ajuste o tempo conforme necessário
+            }, 10); // Ajuste o tempo conforme necessário
           }
 
           runLoop();
         </script>
-
-        <button type="button" id="btn5" class="btn-2" onclick="runLoop()">
-          Simulador
-        </button>
       </div>
     </main>
 
