@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SOF</title>
+    <title>Gravitação e marés</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,8 +26,8 @@
             <a href="#">Formação das ondas</a>
             <a href="pressao.html">Pressão atmosférica</a>
             <a href="densidade.html">A Água do Mar</a>
-            <a href="#">Fenômenos sísmicos</a>
-            <a href="#">Forças de Coriolis</a>
+            <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+            <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
             <a href="forcas-de-atrito.html">Forças de atrito</a>
             <a href="#">Curiosidades</a>
           </div>
@@ -229,6 +229,8 @@
           let targetWheight = 60; // Altura alvo do círculo azul celeste
           let currentWheight = 60; // Altura atual do círculo azul celeste
 
+          
+
           function drawElements() {
             // Limpa o canvas
             pincel.clearRect(0, 0, cnv.width, cnv.height);
@@ -240,12 +242,12 @@
             pincel.fillStyle = "grey";
             pincel.fillRect(520, 200, 100, 400);
 
-            pincel.font = "12px Arial";
+            pincel.font = "11px Arial";
             pincel.fillStyle = "yellow";
-            pincel.fillText("H = 1,6 m", 525, 230);
-            pincel.fillText("máx", 525, 245);
-            pincel.fillText("H = - 0,1 m  ", 525, 375);
-            pincel.fillText("mín", 525, 390);
+            pincel.fillText("H máx = 1,6 m", 525, 220);
+            //pincel.fillText("máx", 525, 245);
+            pincel.fillText("H mín = 0,1 m  ", 525, 390);
+            //pincel.fillText("mín", 525, 390);
 
             // Ajuste para garantir que currentWheight não ultrapasse os limites do canvas
             let maxAllowedHeight = cnv.height; // Altura máxima do canvas
@@ -266,12 +268,45 @@
             pincel.fillStyle = cor;
             pincel.fill();
 
-            // Desenha o mar
+            /* Desenha o mar
             pincel.beginPath();
             pincel.fillStyle = "navy";
             pincel.fillRect(0, 0, 520, currentWheight);
-            pincel.fill();
+            pincel.fill(); */
+
+            //onda
+
+            let y0 = 5;
+      let k = 2 * Math.PI / 100;
+      let w = 2 * Math.PI * 2;
+      let t = 0;
+      let dt = 0.01;
+
+      function passo() {
+        pincel.clearRect(0, 0, 520, currentWheight);
+
+        pincel.beginPath();
+        for (let x = 0; x <= 520; x++) {
+          let y = currentWheight + y0 * Math.sin(k * x - w * t);
+          pincel.lineTo(x, y);
+        }
+        pincel.lineTo(520, 0);
+        pincel.lineTo(0, 0);
+        pincel.closePath()
+
+        pincel.fillStyle = "navy";
+        pincel.fill();
+
+
+        t = t + dt;
+
+        
+
+      }
+
+      passo();
           }
+          
 
           var graphCnv = document.getElementById("graph");
           var graphPincel = graphCnv.getContext("2d");
@@ -319,6 +354,45 @@
             // Atualiza a posição do círculo azul celeste com base na curva do gráfico
             currentWheight = circleY - yOffset; // Atualiza currentWheight para coincidir com circleY sem o yOffset
 
+            // Desenha as legendas no canvas principal
+            graphPincel.save();
+            graphPincel.setTransform(1, 0, 0, 1, 0, 0); // Reset transform to draw text normally
+
+            // Legenda do eixo horizontal (Horas)
+            graphPincel.font = "12px Arial";
+            graphPincel.fillStyle = "black";
+            graphPincel.textAlign = "center";
+            graphPincel.fillText(
+              "T (h)",
+              graphCnv.width - 20,
+              graphCnv.height - 10
+            );
+            let horas = [2, 6, 10, 14, 18, 22];
+            horas.forEach((hora) => {
+              let x = (hora / 24) * graphCnv.width;
+              graphPincel.fillText(hora + "h", x, graphCnv.height - 15);
+              graphPincel.beginPath();
+              graphPincel.moveTo(x, graphCnv.height - 10);
+              graphPincel.lineTo(x, graphCnv.height - 0);
+              graphPincel.stroke();
+            });
+
+            // Legenda do eixo vertical (Altura)
+            graphPincel.font = "12px Arial";
+            graphPincel.fillStyle = "black";
+            graphPincel.textAlign = "left";
+            graphPincel.fillText("Altura (m)", 4, 15);
+            for (let i = 0; i <= 1.6; i += 0.4) {
+              let y = graphCnv.height - 36 - (i / 2.2) * graphCnv.height;
+              graphPincel.fillText(i.toFixed(1) + "m", 15, y + 5);
+              graphPincel.beginPath();
+              graphPincel.moveTo(10, y);
+              graphPincel.lineTo(0, y);
+              graphPincel.stroke();
+            }
+
+            graphPincel.restore();
+
             requestAnimationFrame(drawGraph);
           }
 
@@ -326,6 +400,9 @@
 
           let lastFrameTime = performance.now();
           let smoothingFactor = 0.9;
+
+          // MUDAR CEU AQUI
+
           function changeValues() {
             let now = performance.now();
             let dt = (now - lastFrameTime) / 200;
