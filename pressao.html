@@ -14,33 +14,35 @@
     />
   </head>
   <body>
-   <!--BARRA DE NAVEGAÇÃO-->
-   <header>
-    <nav>
-      <div class="nav-title">
-        <span>Universidade Federal do Paraná</span
-        ><span>Centro de Estudos do Mar</span>
-      </div>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li class="dropdown">
-          <a href="#">Tópicos</a>
-          <div class="dropdown-content">
-            <a href="gravitacao.html">Gravitação e marés</a>
-            <a href="formacao-ondas.html">Formação das ondas</a>
-            <a href="pressao.html">Pressão atmosférica</a>
-            <a href="densidade.html">A Água do Mar</a>
-            <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
-            <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
-            <a href="forcas-de-atrito.html">Forças de atrito</a>
-            <a href="curiosidades.html">Curiosidades</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <!--FIM DA BARRA DE NAVEGAÇÃO-->
+    <!--BARRA DE NAVEGAÇÃO-->
+    <header>
+      <nav>
+        <div class="nav-title">
+          <a href="index.html">
+            <span>Universidade Federal do Paraná</span>
+            <span>Centro de Estudos do Mar</span>
+          </a> 
+        </div>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li class="dropdown">
+            <a href="#">Tópicos</a>
+            <div class="dropdown-content">
+              <a href="gravitacao.html">Gravitação e marés</a>
+              <a href="formacao-ondas.html">Formação das ondas</a>
+              <a href="pressao.html">Pressão atmosférica</a>
+              <a href="densidade.html">A Água do Mar</a>
+              <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+              <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
+              <a href="forcas-de-atrito.html">Forças de atrito</a>
+              <a href="curiosidades.html">Curiosidades</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--FIM DA BARRA DE NAVEGAÇÃO-->
     <main>
       <div class="conteudo">
         <!--"SOBRE"-->
@@ -51,7 +53,7 @@
           peso do ar acima de uma determinada área e varia em diferentes
           altitudes e locais. A medida que subimos na atmosfera a pressão
           atmosférica diminui devido a rarefação do ar e consequente redução da
-          densidade.<br></br>
+          densidade.</p><p>
           Além da altitude, a pressão atmosférica também é influenciada por
           fatores meteorológicos, como sistemas de alta e baixa pressão, frentes
           atmosféricas, ventos e a temperatura. Essas variações na pressão
@@ -77,7 +79,7 @@
           mercúrio em um tubo fechado). Esses instrumentos fornecem leituras da
           pressão atmosférica em diferentes locais e momentos, permitindo o
           acompanhamento e monitoramento das variações da pressão ao longo do
-          tempo.<br></br>A unidade de medida comum para a pressão atmosférica é o
+          tempo.</p><p>A unidade de medida comum para a pressão atmosférica é o
           Pascal (Pa), mas também é comum utilizarmos outras unidades, como
           hectopascal (hPa), milímetros de mercúrio (mmHg) ou atmosferas (atm).
           Ao nível do mar, a pressão atmosférica média é cerca de 1013,25 hPa.
@@ -101,21 +103,41 @@
         </p>
         <div class="imggrav"><img src="img/pressao (3).png" alt="" /></div>
         <p>
-          onde Po é a pressão ao nível do mar, ρ é a densidade da água
-          (aproximadamente igual a 1000,0 Kg/m3) e h é a profundidade. Vale
-          ressaltar que a densidade da água do mar se mantém razoavelmente
-          constante, mesmo a grandes pressões. Assim podemos ver que, por
-          exemplo, a uma profundidade de apenas 10,0m a pressão exercida pela
-          água já será o dobro da pressão exercida ao nível do mar.
+          onde P<sub>0</sub> é a pressão ao nível do mar, &rho; é a densidade da água (aproximadamente igual a 1000,0 Kg/m&sup3;), g é
+          a aceleração gravitacional (aproximadamente 9,80 m/s&sup2;) e h é a
+          profundidade. Como a densidade da água do mar se mantém razoavelmente
+          constante, mesmo a grandes pressões, esta equação será válida na
+          maioria dos casos. Por exemplo, usando esta equação podemos ver que a
+          uma profundidade de apenas 10,0 m a pressão exercida pela água já será
+          o dobro da pressão exercida ao nível do mar.
         </p>
-
+        <p>
+          Mas quando falamos da pressão atmosférica no ar, a equação acima só
+          será válida se estivermos falando de baixas variações de altura. Para
+          variações maiores, a coisa se complica já que a temperatura E a
+          densidade do ar irão se alterar conforme aumenta a altitude. Uma
+          equação que se aproxima mais da realidade, no caso atmosférico, é
+          mostrada a seguir.
+        </p>
+        <div class="imggrav"><img src="img/EqPressão2.jpg" alt="" /></div>
+        <p>
+          onde P<sub>0</sub> é a pressão inicial, M é a massa molar do ar (0,028 kg/mol), g
+          é a aceleração gravitacional, h é a altitude em metros, R é a
+          constante dos gases ideais (8,314 J/Mol.K) e T é a temperatura (em
+          Kelvin). No entanto, vale lembrar que alguns fatores ambientais - como
+          frentes frias, ventos, etc. - podem influenciar no valor da pressão,
+          por isso mesmo a equação acima é uma aproximação.
+        </p>
         <h2>Simulador</h2>
         <p>
-          O simulador a seguir mostra a variação da pressão atmosferica e da
+          O simulador a seguir mostra a variação da pressão atmosférica e da
           pressão hidrostática nos oceanos. A pressão atmosférica é a força
           exercida pelo peso do ar sobre uma superfície, e diminui com o aumento
           de altitude. A pressão hidrostática nos oceanos aumenta com a
-          profundidade devido ao peso da coluna de água acima.
+          profundidade devido ao peso da coluna de água acima. A temperatura nos
+          oceanos permanece mais ou menos estável, mas na atmosfera ela varia
+          bastante. Os dados para a temperatura na atmosfera foram obtidos a
+          partir da <a href="https://pt.wikipedia.org/wiki/Atmosfera_padrão_internacional">Atmosfera Padrão Internacional - ISA</a>.
         </p>
       </div>
       <div id="sim_mares">
@@ -129,7 +151,7 @@
     </main>
     <!--RODAPÉ-->
     <footer>
-      <p>Universidade Federal do Paraná – Centro de Estudos do Mar, 2023</p>
+      <p>Universidade Federal do Paraná – Centro de Estudos do Mar, 2024</p>
     </footer>
   </body>
 </html>

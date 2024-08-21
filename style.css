@@ -8,6 +8,10 @@
 
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   -ms-overflow-style: none;
@@ -50,6 +54,26 @@ nav {
   margin-left: 2rem;
 
 }
+
+.nav-title a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.nav-title a:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+
+
 
 .nav-title span {
   font-size: 1rem;
@@ -309,6 +333,54 @@ main {
 .imggrav p {
   flex-wrap: wrap;
 }
+
+#imgwaves {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* Style the container */
+.container-curiosidades {
+  width: 80%;
+  margin: 2rem auto;
+}
+
+/* Style the button */
+.curiosidades-titulo {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--nav-bar);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding-left: 2rem;
+  border-radius: 1rem;
+}
+
+
+/* Add some transition for smooth expand/collapse */
+.curiosidades-conteudo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+}
+
+/* Optional styling for the content */
+.curiosidades-conteudo p {
+  padding: 2rem 3rem;
+  background-color: #f5f5f5;
+  margin: 0;
+  font-size: 1rem;
+}
+
 
 .canvas {
   display: flex;
