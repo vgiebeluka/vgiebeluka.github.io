@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <!--METADADOS-->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Formação das ondas</title>
+    <title>Curiosidades</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,14 +14,18 @@
       rel="stylesheet"
     />
   </head>
+  <!--CORPO DA PÁGINA-->
   <body>
     <!--BARRA DE NAVEGAÇÃO-->
     <header>
       <nav>
         <div class="nav-title">
           <a href="index.html">
+            <img src="img/logoCEM.svg" alt="" width="48px">
+            <div class="nav-title-span">
             <span>Universidade Federal do Paraná</span>
             <span>Centro de Estudos do Mar</span>
+          </div>
           </a>
         </div>
         <ul>
@@ -31,8 +36,8 @@
               <a href="gravitacao.html">Gravitação e marés</a>
               <a href="formacao-ondas.html">Formação das ondas</a>
               <a href="pressao.html">Pressão atmosférica</a>
-              <a href="densidade.html">A Água do Mar</a>
-              <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+              <a href="agua-do-mar.html">A Água do Mar</a>
+              <a href="fenomenos-sismicos.html">Fenômenos sísmicos</a>
               <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
               <a href="forcas-de-atrito.html">Forças de atrito</a>
               <a href="curiosidades.html">Curiosidades</a>
@@ -41,12 +46,12 @@
         </ul>
       </nav>
     </header>
-    <!--FIM DA BARRA DE NAVEGAÇÃO-->
+    <!--CONTEÚDO DA PÁGINA-->
     <main>
       <div class="conteudo">
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            Diferença entre calor e temperatura
+            <span class="seta">►</span> Qual a diferença entre calor e temperatura?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -60,7 +65,7 @@
               outras palavras, o calor é a energia transferida entre dois
               objetos ou sistemas devido a uma diferença de temperatura,
               enquanto a temperatura é uma medida da quantidade de energia
-              térmica em um determinado objeto ou sistema. Por exemplo, se você
+              térmica em um determinado objeto ou sistema.<br><br>Por exemplo, se você
               colocar um objeto quente em contato com um objeto frio, o calor
               fluirá do objeto mais quente para o mais frio até que os dois
               objetos atinjam um estado de equilíbrio térmico, onde eles têm a
@@ -86,7 +91,7 @@
         </div>
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            Diferença entre Tempo e Clima
+            <span class="seta">►</span> Qual a diferença entre Tempo e Clima?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -105,7 +110,7 @@
           </div>
         </div>
         <div class="container-curiosidades">
-          <button class="curiosidades-titulo">Por que a água e azul?</button>
+          <button class="curiosidades-titulo"><span class="seta">►</span> Por que a água e azul?</button>
           <div class="curiosidades-conteudo">
             <p>
               Por conta da absorção da luz vermelha pelas pontes de hidrogênio e
@@ -113,14 +118,14 @@
               azul remanescente após a vermelha ter sido absorvida é espalhada
               de volta para a superfície e é isso que vemos.
             </p>
-            <div class="imggrav">
+            <div class="img-container">
               <img src="img/BlueWater.jpg" alt="">
             </div>
           </div>
         </div>
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            Por que as ondas quebram paralelas à praia?
+            <span class="seta">►</span> Por que as ondas quebram paralelas à praia?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -140,14 +145,14 @@
               , aonde a explicação do professor Boaro sobre a refração das ondas
               na costa ocorre a partir do minuto 18:00.
             </p>
-            <div class="imggrav">
+            <div class="img-container">
               <img src="img/OndasParalelas.jpg" alt="">
             </div>
           </div>
         </div>
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            A corrente do filme Nemo existe?
+            <span class="seta">►</span> A corrente do filme Nemo existe?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -159,7 +164,7 @@
               um pouco depois de Sidney, onde se separa da costa - onde Marlin e
               Dori se despedem das tartarugas. Saiba mais <a href="https://earthobservatory.nasa.gov/images/15366/east-australian-current">aqui</a>.
             </p>
-            <div class="imggrav">
+            <div class="img-container">
               <img src="img/Nemo.jpg" alt="">
             </div>
           </div>
@@ -172,19 +177,20 @@
     </footer>
 
     <script>
-      document
-        .querySelectorAll(".curiosidades-titulo")
-        .forEach(function (button) {
-          button.addEventListener("click", function () {
-            var content = this.nextElementSibling;
-
-            if (content.style.maxHeight) {
-              content.style.maxHeight = null; // Collapse the content
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px"; // Expand the content
-            }
-          });
+      document.querySelectorAll(".curiosidades-titulo").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var content = this.nextElementSibling;
+    
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null; // Ocultar conteúdo
+            this.classList.remove("active"); // Remove a classe active para resetar a rotação da seta
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Exibir conteúdo
+            this.classList.add("active"); // Adiciona a classe active para rotacionar a seta
+          }
         });
+      });
     </script>
+    
   </body>
 </html>

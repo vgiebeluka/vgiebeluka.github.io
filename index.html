@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <!--METADADOS-->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,39 +14,44 @@
       rel="stylesheet"
     />
   </head>
+  <!--CORPO DA PÁGINA-->
   <body>
     <!--BARRA DE NAVEGAÇÃO-->
     <header>
       <nav>
         <div class="nav-title">
           <a href="">
-          <span>Universidade Federal do Paraná</span>
-          <span>Centro de Estudos do Mar</span>
-        </a> 
+            <img src="img/logoCEM.svg" alt="" width="48px">
+            <div class="nav-title-span">
+            <span>Universidade Federal do Paraná</span>
+            <span>Centro de Estudos do Mar</span>
+          </div>
+          </a>
         </div>
         <ul>
-          <li><a href="sobre.html">Sobre</a></li>
+          <li id="about-btn"><a href="sobre.html">Sobre</a></li>
           <li class="dropdown">
             <a href="#">Tópicos</a>
             <div class="dropdown-content">
               <a href="gravitacao.html">Gravitação e marés</a>
               <a href="formacao-ondas.html">Formação das ondas</a>
               <a href="pressao.html">Pressão atmosférica</a>
-              <a href="densidade.html">A Água do Mar</a>
-              <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+              <a href="agua-do-mar.html">A Água do Mar</a>
+              <a href="fenomenos-sismicos.html">Fenômenos sísmicos</a>
               <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
               <a href="forcas-de-atrito.html">Forças de atrito</a>
               <a href="curiosidades.html">Curiosidades</a>
+              <a id="about-dropdown" href="sobre.html">Sobre</a>
             </div>
           </li>
         </ul>
       </nav>
     </header>
-    <!--FIM DA BARRA DE NAVEGAÇÃO-->
+    <!--CONTEÚDO DA PÁGINA-->
     <main>
-      <div class="wrapper">
-        <!--"SOBRE"-->
-        <div class="sobre">
+      <div class="container-hero">
+        <!--"HERO"-->
+        <div class="hero">
           <h1>OCEANOGRAFIA FÍSICA</h1>
           <p>
             A oceanografia física é uma área de estudo que se concentra no
@@ -54,7 +60,7 @@
             crucial para a compreensão da dinâmica do oceano e suas interações
             com outros sistemas terrestres. No entanto, muitos estudantes têm
             dificuldades em compreender os conceitos teóricos e práticos da
-            oceanografia física.<br>
+            oceanografia física.<br /><br />
             Neste contexto, o objetivo deste site é apresentar informações e
             objetos de aprendizagem virtual que simulam fenômenos e processos da
             oceanografia física, como correntes, ondas e marés, e possam
@@ -63,68 +69,66 @@
             que possam ser acessados a partir de dispositivos móveis e
             computadores.
           </p>
-          <div class="mainbtn">
-            <a href="#simsarea"><button>SAIBA MAIS</button></a>
+          <div class="main-btn">
+            <a href="#topicos"><button>SAIBA MAIS</button></a>
           </div>
         </div>
-        <!--FIM "SOBRE"-->
       </div>
 
       <!--SIMULAÇÕES-->
-      <div class="simsarea" id="simsarea">
+      <div class="topicos" id="topicos">
         <h1>APRENDA MAIS SOBRE A OCEANOGRAFIA FÍSICA</h1>
-        <div class="sims">
-          <div class="sim0">
+        <div class="container-topicos">
+          <div>
             <a href="gravitacao.html">
               <h3>Gravitação e marés</h3>
-              <img src="img/sim0.jpg" alt="sim0" />
+              <img src="img/topico (1).jpg" alt="topico" />
             </a>
           </div>
-          <div class="sim1">
+          <div>
             <a href="#">
               <h3>Formação das ondas</h3>
-              <img src="img/sim1.jpg" alt="sim1" />
+              <img src="img/topico (2).jpg" alt="sim1" />
             </a>
           </div>
-          <div class="sim2">
+          <div>
             <a href="pressao.html">
               <h3>Pressão atmosférica</h3>
-              <img src="img/sim2.jpg" alt="sim2" />
+              <img src="img/topico (3).jpg" alt="sim2" />
             </a>
           </div>
-          <div class="sim3">
-            <a href="densidade.html">
+          <div>
+            <a href="agua-do-mar.html">
               <h3>A Água do Mar</h3>
-              <img src="img/sim3.jpg" alt="sim3" />
+              <img src="img/topico (4).jpg" alt="sim3" />
             </a>
           </div>
-          <div class="sim4">
-            <a href="fenomenos_sismicos.html">
+          <div>
+            <a href="fenomenos-sismicos.html">
               <h3>Fenômenos sísmicos</h3>
-              <img src="img/sim4.jpg" alt="sim4" />
+              <img src="img/topico (5).jpg" alt="sim4" />
             </a>
           </div>
-          <div class="sim5">
+          <div>
             <a href="forcas-de-coriolis.html">
               <h3>Forças de Coriolis</h3>
-              <img src="img/sim5.jpg" alt="sim5" />
+              <img src="img/topico (6).jpg" alt="sim5" />
             </a>
           </div>
-          <div class="sim6">
+          <div>
             <a href="forcas-de-atrito.html">
               <h3>Forças de atrito</h3>
-              <img src="img/sim6.jpg" alt="sim6" />
+              <img src="img/topico (7).jpg" alt="sim6" />
             </a>
           </div>
-          <div class="sim7">
-            <a href="#">
+          <div>
+            <a href="curiosidades.html">
               <h3>Curiosidades</h3>
-              <img src="img/sim7.jpg" alt="sim7" />
+              <img src="img/topico (8).jpg" alt="sim7" />
             </a>
           </div>
         </div>
       </div>
-      <!--FIM SIMULAÇÕES-->
     </main>
     <!--RODAPÉ-->
     <footer>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <!--METADADOS-->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SOF</title>
+    <title>Forças de Coriolis</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,16 +14,21 @@
       rel="stylesheet"
     />
   </head>
+  <!--CORPO DA PÁGINA-->
   <body>
     <!--BARRA DE NAVEGAÇÃO-->
     <header>
       <nav>
         <div class="nav-title">
-          <span>Universidade Federal do Paraná</span
-          ><span>Centro de Estudos do Mar</span>
+          <a href="index.html">
+            <img src="img/logoCEM.svg" alt="" width="48px">
+            <div class="nav-title-span">
+            <span>Universidade Federal do Paraná</span>
+            <span>Centro de Estudos do Mar</span>
+          </div>
+          </a>
         </div>
         <ul>
-          <li><a href="index.html">Início</a></li>
           <li><a href="sobre.html">Sobre</a></li>
           <li class="dropdown">
             <a href="#">Tópicos</a>
@@ -30,8 +36,8 @@
               <a href="gravitacao.html">Gravitação e marés</a>
               <a href="formacao-ondas.html">Formação das ondas</a>
               <a href="pressao.html">Pressão atmosférica</a>
-              <a href="densidade.html">A Água do Mar</a>
-              <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+              <a href="agua-do-mar.html">A Água do Mar</a>
+              <a href="fenomenos-sismicos.html">Fenômenos sísmicos</a>
               <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
               <a href="forcas-de-atrito.html">Forças de atrito</a>
               <a href="curiosidades.html">Curiosidades</a>
@@ -40,7 +46,7 @@
         </ul>
       </nav>
     </header>
-    <!--FIM DA BARRA DE NAVEGAÇÃO-->
+    <!--CONTEÚDO DA PÁGINA-->
     <main>
       <div class="conteudo">
         <h1>Forças de Coriolis</h1>
@@ -49,7 +55,9 @@
           agir sobre objetos que estão em movimento em relação a um referencial
           rotativo, como a Terra por exemplo. Assim um objeto em movimento
           parece apresentar um desvio em relação ao seu curso inicial, quando a
-          velocidade e direção são medidas em relação ao referencial em rotação. <br></br>
+          velocidade e direção são medidas em relação ao referencial em rotação.
+        </p>
+        <p>
           Na figura abaixo é possível ver um exemplo de como isto funciona. Na
           figura à esquerda vemos o movimento a partir de uma perspectiva
           externa ao disco em rotação e vê-se que a bola roxa faz um movimento
@@ -58,7 +66,7 @@
           como na figura à direita, a bola roxa parecerá fazer um movimento
           curvo até a borda do disco.
         </p>
-        <div class="imggrav">
+        <div class="img-container">
           <img src="img/Coriolis1.gif" alt="" />
           <p>
             Deslocamento em relação a um referencial em movimento circular.
@@ -75,14 +83,17 @@
           Terra, que está girando. Por exemplo, se uma massa de ar frio se
           desloca do Pólo Sul em direção a linha do equador, parece que a mesma
           sofre um desvio para oeste em relação à Terra, como vemos na figura
-          abaixo. <br></br> De maneira semelhante, uma massa de ar quente que se desloque
-          em direção ao Pólo Sul parecerá sofrer um deslocamento para o leste. o
+          abaixo.
+        </p>
+        <p>
+          De maneira semelhante, uma massa de ar quente que se desloque em
+          direção ao Pólo Sul parecerá sofrer um deslocamento para o leste. o
           vídeo disponível aqui
           <a href="https://youtu.be/KwkrNMnLH78?si=Ms7w9NGxOSvrsWeP">aqui</a> dá
           uma boa ideia de como isto funciona. O mesmo conceito se aplica em
           movimentos de grande escala que ocorrem no hemisfério norte.
         </p>
-        <div class="imggrav">
+        <div class="img-container">
           <img src="img/Coriolis2.jpg" alt="" />
           <p>
             Efeito de Coriolis em movimentos que ocorrem na Terra. Fonte:
@@ -93,13 +104,16 @@
           Desta forma, no hemisfério norte a força de Coriolis faz com que os
           sistemas de baixa pressão girem no sentido anti-horário e os sistemas
           de alta pressão girem no sentido horário, e no hemisfério sul ocorre o
-          oposto. <br></br>E nos oceanos, a força de Coriolis faz com que a água se mova
-          em grandes padrões circulares chamados giros, conforme figura a
-          seguir, que são formados pelas correntes oceânicas quentes que saem do
-          equador terrestre em direção aos pólos e pelas correntes oceânicas
-          frias que fazem o caminho inverso.
+          oposto.
         </p>
-        <div class="imggrav">
+        <p>
+          E nos oceanos, a força de Coriolis faz com que a água se mova em
+          grandes padrões circulares chamados giros, conforme figura a seguir,
+          que são formados pelas correntes oceânicas quentes que saem do equador
+          terrestre em direção aos pólos e pelas correntes oceânicas frias que
+          fazem o caminho inverso.
+        </p>
+        <div class="img-container">
           <img src="img/girosoceânicos.webp" alt="" />
           <p>
             Correntes e giros oceânicos. Fonte:
@@ -113,7 +127,7 @@
     </main>
     <!--RODAPÉ-->
     <footer>
-      <p>Universidade Federal do Paraná – Centro de Estudos do Mar, 2023</p>
+      <p>Universidade Federal do Paraná – Centro de Estudos do Mar, 2024</p>
     </footer>
   </body>
 </html>

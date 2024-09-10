@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <!--METADADOS-->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SOF</title>
+    <title>Pressáo atmosférica</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,18 +14,21 @@
       rel="stylesheet"
     />
   </head>
+  <!--CORPO DA PÁGINA-->
   <body>
     <!--BARRA DE NAVEGAÇÃO-->
     <header>
       <nav>
         <div class="nav-title">
           <a href="index.html">
+            <img src="img/logoCEM.svg" alt="" width="48px">
+            <div class="nav-title-span">
             <span>Universidade Federal do Paraná</span>
             <span>Centro de Estudos do Mar</span>
-          </a> 
+          </div>
+          </a>
         </div>
         <ul>
-          <li><a href="index.html">Início</a></li>
           <li><a href="sobre.html">Sobre</a></li>
           <li class="dropdown">
             <a href="#">Tópicos</a>
@@ -32,8 +36,8 @@
               <a href="gravitacao.html">Gravitação e marés</a>
               <a href="formacao-ondas.html">Formação das ondas</a>
               <a href="pressao.html">Pressão atmosférica</a>
-              <a href="densidade.html">A Água do Mar</a>
-              <a href="fenomenos_sismicos.html">Fenômenos sísmicos</a>
+              <a href="agua-do-mar.html">A Água do Mar</a>
+              <a href="fenomenos-sismicos.html">Fenômenos sísmicos</a>
               <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
               <a href="forcas-de-atrito.html">Forças de atrito</a>
               <a href="curiosidades.html">Curiosidades</a>
@@ -42,10 +46,9 @@
         </ul>
       </nav>
     </header>
-    <!--FIM DA BARRA DE NAVEGAÇÃO-->
+    <!--CONTEÚDO DA PÁGINA-->
     <main>
       <div class="conteudo">
-        <!--"SOBRE"-->
         <h1>Pressão atmosférica</h1>
         <p>
           A pressão atmosférica é a força exercida pela atmosfera da Terra sobre
@@ -53,7 +56,9 @@
           peso do ar acima de uma determinada área e varia em diferentes
           altitudes e locais. A medida que subimos na atmosfera a pressão
           atmosférica diminui devido a rarefação do ar e consequente redução da
-          densidade.</p><p>
+          densidade.
+        </p>
+        <p>
           Além da altitude, a pressão atmosférica também é influenciada por
           fatores meteorológicos, como sistemas de alta e baixa pressão, frentes
           atmosféricas, ventos e a temperatura. Essas variações na pressão
@@ -63,7 +68,7 @@
           climas mais chuvosos, enquanto que pressões maiores que a média estão
           associadas a temperaturas maiores e clima mais seco.
         </p>
-        <div class="imggrav">
+        <div class="img-container">
           <img src="img/pressao (1).png" alt="" />
           <p>
             Variação de pressão e densidade em relação à altitude.
@@ -79,15 +84,18 @@
           mercúrio em um tubo fechado). Esses instrumentos fornecem leituras da
           pressão atmosférica em diferentes locais e momentos, permitindo o
           acompanhamento e monitoramento das variações da pressão ao longo do
-          tempo.</p><p>A unidade de medida comum para a pressão atmosférica é o
-          Pascal (Pa), mas também é comum utilizarmos outras unidades, como
-          hectopascal (hPa), milímetros de mercúrio (mmHg) ou atmosferas (atm).
-          Ao nível do mar, a pressão atmosférica média é cerca de 1013,25 hPa.
-          Essa pressão é conhecida como pressão atmosférica padrão e é utilizada
-          como referência em muitas medições e cálculos relacionados ao clima,
+          tempo.
+        </p>
+        <p>
+          A unidade de medida comum para a pressão atmosférica é o Pascal (Pa),
+          mas também é comum utilizarmos outras unidades, como hectopascal
+          (hPa), milímetros de mercúrio (mmHg) ou atmosferas (atm). Ao nível do
+          mar, a pressão atmosférica média é cerca de 1013,25 hPa. Essa pressão
+          é conhecida como pressão atmosférica padrão e é utilizada como
+          referência em muitas medições e cálculos relacionados ao clima,
           meteorologia e outras ciências da Terra.
         </p>
-        <div class="imggrav">
+        <div class="img-container">
           <img src="img/pressao (2).png" alt="" height="600px" />
           <p>Barômetro. Fonte: Steve Buissinne por Pixabay</p>
         </div>
@@ -101,15 +109,18 @@
           pressão dentro do oceano será influenciada pela pressão atmosférica,
           já que a pressão neste caso será calculada por:
         </p>
-        <div class="imggrav"><img src="img/pressao (3).png" alt="" /></div>
+        <div class="img-container">
+          <img src="img/pressao (3).png" alt="" />
+        </div>
         <p>
-          onde P<sub>0</sub> é a pressão ao nível do mar, &rho; é a densidade da água (aproximadamente igual a 1000,0 Kg/m&sup3;), g é
-          a aceleração gravitacional (aproximadamente 9,80 m/s&sup2;) e h é a
-          profundidade. Como a densidade da água do mar se mantém razoavelmente
-          constante, mesmo a grandes pressões, esta equação será válida na
-          maioria dos casos. Por exemplo, usando esta equação podemos ver que a
-          uma profundidade de apenas 10,0 m a pressão exercida pela água já será
-          o dobro da pressão exercida ao nível do mar.
+          onde P<sub>0</sub> é a pressão ao nível do mar, &rho; é a densidade da
+          água (aproximadamente igual a 1000,0 Kg/m&sup3;), g é a aceleração
+          gravitacional (aproximadamente 9,80 m/s&sup2;) e h é a profundidade.
+          Como a densidade da água do mar se mantém razoavelmente constante,
+          mesmo a grandes pressões, esta equação será válida na maioria dos
+          casos. Por exemplo, usando esta equação podemos ver que a uma
+          profundidade de apenas 10,0 m a pressão exercida pela água já será o
+          dobro da pressão exercida ao nível do mar.
         </p>
         <p>
           Mas quando falamos da pressão atmosférica no ar, a equação acima só
@@ -119,16 +130,16 @@
           equação que se aproxima mais da realidade, no caso atmosférico, é
           mostrada a seguir.
         </p>
-        <div class="imggrav"><img src="img/EqPressão2.jpg" alt="" /></div>
+        <div class="img-container"><img src="img/EqPressão2.jpg" alt="" /></div>
         <p>
-          onde P<sub>0</sub> é a pressão inicial, M é a massa molar do ar (0,028 kg/mol), g
-          é a aceleração gravitacional, h é a altitude em metros, R é a
-          constante dos gases ideais (8,314 J/Mol.K) e T é a temperatura (em
+          onde P<sub>0</sub> é a pressão inicial, M é a massa molar do ar (0,028
+          kg/mol), g é a aceleração gravitacional, h é a altitude em metros, R é
+          a constante dos gases ideais (8,314 J/Mol.K) e T é a temperatura (em
           Kelvin). No entanto, vale lembrar que alguns fatores ambientais - como
           frentes frias, ventos, etc. - podem influenciar no valor da pressão,
           por isso mesmo a equação acima é uma aproximação.
         </p>
-        <h2>Simulador</h2>
+        <h2>Simulação</h2>
         <p>
           O simulador a seguir mostra a variação da pressão atmosférica e da
           pressão hidrostática nos oceanos. A pressão atmosférica é a força
@@ -137,15 +148,18 @@
           profundidade devido ao peso da coluna de água acima. A temperatura nos
           oceanos permanece mais ou menos estável, mas na atmosfera ela varia
           bastante. Os dados para a temperatura na atmosfera foram obtidos a
-          partir da <a href="https://pt.wikipedia.org/wiki/Atmosfera_padrão_internacional">Atmosfera Padrão Internacional - ISA</a>.
+          partir da
+          <a href="https://pt.wikipedia.org/wiki/Atmosfera_padrão_internacional"
+            >Atmosfera Padrão Internacional - ISA</a
+          >.
         </p>
       </div>
-      <div id="sim_mares">
+      <div id="simulador-pressao">
         <iframe
           src="simulacao_pressao.html"
           frameborder="0"
-          width="1010px"
-          height="700px"
+          width="1024px"
+          height="640px"
         ></iframe>
       </div>
     </main>
