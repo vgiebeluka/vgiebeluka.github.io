@@ -21,15 +21,15 @@
       <nav>
         <div class="nav-title">
           <a href="index.html">
-            <img src="img/logoCEM.svg" alt="" width="48px">
+            <img src="img/logoCEM.svg" alt="" width="48px" />
             <div class="nav-title-span">
-            <span>Universidade Federal do Paraná</span>
-            <span>Centro de Estudos do Mar</span>
-          </div>
+              <span>Universidade Federal do Paraná</span>
+              <span>Centro de Estudos do Mar</span>
+            </div>
           </a>
         </div>
         <ul>
-          <li><a href="sobre.html">Sobre</a></li>
+          <li id="about-btn"><a href="sobre.html">Sobre</a></li>
           <li class="dropdown">
             <a href="#">Tópicos</a>
             <div class="dropdown-content">
@@ -41,6 +41,7 @@
               <a href="forcas-de-coriolis.html">Forças de Coriolis</a>
               <a href="forcas-de-atrito.html">Forças de atrito</a>
               <a href="curiosidades.html">Curiosidades</a>
+              <a id="about-dropdown" href="sobre.html">Sobre</a>
             </div>
           </li>
         </ul>
@@ -51,7 +52,8 @@
       <div class="conteudo">
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            <span class="seta">►</span> Qual a diferença entre calor e temperatura?
+            <span class="seta">►</span> Qual a diferença entre calor e
+            temperatura?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -65,17 +67,17 @@
               outras palavras, o calor é a energia transferida entre dois
               objetos ou sistemas devido a uma diferença de temperatura,
               enquanto a temperatura é uma medida da quantidade de energia
-              térmica em um determinado objeto ou sistema.<br><br>Por exemplo, se você
-              colocar um objeto quente em contato com um objeto frio, o calor
-              fluirá do objeto mais quente para o mais frio até que os dois
-              objetos atinjam um estado de equilíbrio térmico, onde eles têm a
-              mesma temperatura. A transferência de calor do objeto mais quente
-              para o mais frio é resultado da diferença de temperatura entre os
-              dois objetos. A temperatura é normalmente medida usando um
-              termômetro, que é um dispositivo que usa uma propriedade física de
-              uma substância, como a expansão de um líquido ou gás, para indicar
-              sua temperatura. O calor, por outro lado, é medido em unidades de
-              energia, como joules ou calorias.<br><br>
+              térmica em um determinado objeto ou sistema.<br /><br />Por
+              exemplo, se você colocar um objeto quente em contato com um objeto
+              frio, o calor fluirá do objeto mais quente para o mais frio até
+              que os dois objetos atinjam um estado de equilíbrio térmico, onde
+              eles têm a mesma temperatura. A transferência de calor do objeto
+              mais quente para o mais frio é resultado da diferença de
+              temperatura entre os dois objetos. A temperatura é normalmente
+              medida usando um termômetro, que é um dispositivo que usa uma
+              propriedade física de uma substância, como a expansão de um
+              líquido ou gás, para indicar sua temperatura. O calor, por outro
+              lado, é medido em unidades de energia, como joules ou calorias.<br /><br />
               O calor é um parâmetro muito importante na oceanografia física,
               pois desempenha um papel fundamental na circulação oceânica e no
               clima. No oceano, o calor é transportado principalmente pelo
@@ -110,7 +112,9 @@
           </div>
         </div>
         <div class="container-curiosidades">
-          <button class="curiosidades-titulo"><span class="seta">►</span> Por que a água e azul?</button>
+          <button class="curiosidades-titulo">
+            <span class="seta">►</span> Por que a água e azul?
+          </button>
           <div class="curiosidades-conteudo">
             <p>
               Por conta da absorção da luz vermelha pelas pontes de hidrogênio e
@@ -119,13 +123,14 @@
               de volta para a superfície e é isso que vemos.
             </p>
             <div class="img-container">
-              <img src="img/BlueWater.jpg" alt="">
+              <img src="img/BlueWater.jpg" alt="" />
             </div>
           </div>
         </div>
         <div class="container-curiosidades">
           <button class="curiosidades-titulo">
-            <span class="seta">►</span> Por que as ondas quebram paralelas à praia?
+            <span class="seta">►</span> Por que as ondas quebram paralelas à
+            praia?
           </button>
           <div class="curiosidades-conteudo">
             <p>
@@ -146,7 +151,7 @@
               na costa ocorre a partir do minuto 18:00.
             </p>
             <div class="img-container">
-              <img src="img/OndasParalelas.jpg" alt="">
+              <img src="img/OndasParalelas.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -162,10 +167,14 @@
               se encontra a Grande Barreira de Corais, que é onde o peixe Nemo
               vive inicialmente, e flui ao longo da costa leste da Austrália até
               um pouco depois de Sidney, onde se separa da costa - onde Marlin e
-              Dori se despedem das tartarugas. Saiba mais <a href="https://earthobservatory.nasa.gov/images/15366/east-australian-current">aqui</a>.
+              Dori se despedem das tartarugas. Saiba mais
+              <a
+                href="https://earthobservatory.nasa.gov/images/15366/east-australian-current"
+                >aqui</a
+              >.
             </p>
             <div class="img-container">
-              <img src="img/Nemo.jpg" alt="">
+              <img src="img/Nemo.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -177,20 +186,21 @@
     </footer>
 
     <script>
-      document.querySelectorAll(".curiosidades-titulo").forEach(function (button) {
-        button.addEventListener("click", function () {
-          var content = this.nextElementSibling;
-    
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null; // Ocultar conteúdo
-            this.classList.remove("active"); // Remove a classe active para resetar a rotação da seta
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px"; // Exibir conteúdo
-            this.classList.add("active"); // Adiciona a classe active para rotacionar a seta
-          }
+      document
+        .querySelectorAll(".curiosidades-titulo")
+        .forEach(function (button) {
+          button.addEventListener("click", function () {
+            var content = this.nextElementSibling;
+
+            if (content.style.maxHeight) {
+              content.style.maxHeight = null; // Ocultar conteúdo
+              this.classList.remove("active"); // Remove a classe active para resetar a rotação da seta
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px"; // Exibir conteúdo
+              this.classList.add("active"); // Adiciona a classe active para rotacionar a seta
+            }
+          });
         });
-      });
     </script>
-    
   </body>
 </html>
